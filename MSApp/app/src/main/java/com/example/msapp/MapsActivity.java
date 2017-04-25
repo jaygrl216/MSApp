@@ -21,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Formatter;
@@ -88,6 +89,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void startWalk(View view){
         //checking to see if test started
+        MarkerOptions startMarker, endMarker;
+
         if(!testStart) {
             //permission denied
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -106,7 +109,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 map.setMyLocationEnabled(true);
                 Location temp = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 LatLng currentLatLng = new LatLng(temp.getLatitude(), temp.getLongitude());
-                map.addMarker(new MarkerOptions().position(currentLatLng).title("Start Location"));
+                startMarker = new MarkerOptions().position(currentLatLng).title("Start Location");
+                map.addMarker(startMarker);
                 //map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
                 Button tempCast = (Button) view;
@@ -118,11 +122,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             Location temp = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             LatLng currentLatLng = new LatLng(temp.getLatitude(), temp.getLongitude());
-            map.addMarker(new MarkerOptions().position(currentLatLng).title("Final Location"));
+            endMarker = new MarkerOptions().position(currentLatLng).title("Final Location");
+            map.addMarker(endMarker);
             //map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
             Button tempCast = (Button) view;
-            tempCast.setText("End Test");
+            tempCast.setEnabled(false);
         }
 
     }
