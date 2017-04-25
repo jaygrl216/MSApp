@@ -17,11 +17,13 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -164,6 +166,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .color(Color.RED));
             TextView txtCurrentSpeed = (TextView)this.findViewById(R.id.txtCurrentSpeed);
             txtCurrentSpeed.setText("Current speed: " + (distance/time) + " M/S");
+            //basing off of http://stackoverflow.com/questions/14828217/android-map-v2-zoom-to-show-all-the-markers (specifically, Zumry Mohamed)
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            builder.include(startMarker.getPosition());
+            builder.include(endMarker.getPosition());
+            CameraUpdate cameraupdate = CameraUpdateFactory.newLatLngBounds(builder.build(), (int) (getResources().getDisplayMetrics().widthPixels * .15));
+            map.moveCamera(cameraupdate);
         }
 
     }
