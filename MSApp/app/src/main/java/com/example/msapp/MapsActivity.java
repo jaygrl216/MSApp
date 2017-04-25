@@ -3,6 +3,7 @@ package com.example.msapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.Formatter;
 import java.util.Locale;
@@ -156,6 +158,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             distance = getDistance(startMarker.getPosition().latitude, endMarker.getPosition().latitude,
                     startMarker.getPosition().longitude, endMarker.getPosition().longitude,
                    startAltitude, endAltitude);
+            map.addPolyline(new PolylineOptions()
+                    .add(startMarker.getPosition(), endMarker.getPosition())
+                    .width(5)
+                    .color(Color.RED));
             TextView txtCurrentSpeed = (TextView)this.findViewById(R.id.txtCurrentSpeed);
             txtCurrentSpeed.setText("Current speed: " + (distance/time) + " M/S");
         }
