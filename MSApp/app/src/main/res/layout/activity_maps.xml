@@ -29,6 +29,6 @@ tools:context="com.example.msapp.MapsActivity">
         android:text="Start Walking"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="-10dp"
+        android:onClick="startWalk"
         android:layout_below="@+id/txtCurrentSpeed"/>
 </RelativeLayout>
