@@ -34,7 +34,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private boolean testStart;
 
-
+    protected long startTime = 0;
+    protected long stopTime = 0;
+    protected double time = 0.00;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +115,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 map.addMarker(startMarker);
                 //map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
+                startTime = System.currentTimeMillis();
+
                 Button tempCast = (Button) view;
                 tempCast.setText("End Test");
             }
@@ -128,6 +132,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
             Button tempCast = (Button) view;
             tempCast.setEnabled(false);
+            stopTime = System.currentTimeMillis();
+            time = (stopTime - startTime);
+            time = time / 1000;
         }
 
     }
