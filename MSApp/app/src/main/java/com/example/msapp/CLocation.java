@@ -6,6 +6,8 @@ import android.location.Location;
  * Created by Ben McHugh on 4/22/2017.
  */
 
+/* testinf for github */
+
 public class CLocation extends Location {
 
     private boolean bUseMetricUnits = false;
