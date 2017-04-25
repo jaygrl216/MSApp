@@ -113,6 +113,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 tempCast.setText("End Test");
             }
         }
+        else{
+            //setting end location
+
+            Location temp = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            LatLng currentLatLng = new LatLng(temp.getLatitude(), temp.getLongitude());
+            map.addMarker(new MarkerOptions().position(currentLatLng).title("Final Location"));
+            //map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
+            Button tempCast = (Button) view;
+            tempCast.setText("End Test");
+        }
 
     }
 
