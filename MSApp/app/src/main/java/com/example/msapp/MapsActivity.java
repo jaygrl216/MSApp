@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button startWalk;
     private LocationManager locationManager;
     private boolean testStart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
     }
 
 
@@ -83,16 +87,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void startWalk(View view){
+        //permission denied
         if (ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-
-
             ActivityCompat.requestPermissions( this, new String[] {  Manifest.permission.ACCESS_FINE_LOCATION  },
                     1);
         } else {
             testStart = true;
+
+
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
             this.updateSpeed(null);
+
+
+            //setting location
+            map.setMyLocationEnabled(true);
+            //code modified from http://stackoverflow.com/questions/34608517/map-setmylocationenabledtrue-not-working
+            map.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+                @Override
+                public boolean onMyLocationButtonClick() {
+                    //noinspection MissingPermission
+                    Location temp = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    LatLng currentLatLng = new LatLng(temp.getLatitude(), temp.getLongitude());
+                    map.addMarker(new MarkerOptions().position(currentLatLng).title("Start Location"));
+                    map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+                    return false;
+                }
+            });
         }
 
     }
