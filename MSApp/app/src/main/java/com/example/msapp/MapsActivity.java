@@ -37,6 +37,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected long startTime = 0;
     protected long stopTime = 0;
     protected double time = 0.00;
+    MarkerOptions startMarker = null, endMarker = null;
+    Double startAltitude = 0.0, endAltitude;
+    Double distance, speed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,9 +92,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         txtCurrentSpeed.setText("Current speed: "+ strCurrentSpeed + " " + strUnits);
     }
 
+    //distance function was created by stackoverflow user David George
+    //link to the said post: http://stackoverflow.com/questions/3694380/calculating-distance-between-two-points-using-latitude-longitude-what-am-i-doi
+    public static double getDistance(double lat1, double lat2, double lon1,
+                                  double lon2, double el1, double el2) {
+
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = R * c * 1000; // convert to meters
+
+        double height = el1 - el2;
+
+        distance = Math.pow(distance, 2) + Math.pow(height, 2);
+        return Math.sqrt(distance);
+    }
+
+
     public void startWalk(View view){
         //checking to see if test started
-        MarkerOptions startMarker, endMarker;
+
 
         if(!testStart) {
             //permission denied
@@ -113,7 +138,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng currentLatLng = new LatLng(temp.getLatitude(), temp.getLongitude());
                 startMarker = new MarkerOptions().position(currentLatLng).title("Start Location");
                 map.addMarker(startMarker);
-                //map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+                startAltitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getAltitude();
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
                 startTime = System.currentTimeMillis();
 
@@ -128,13 +153,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng currentLatLng = new LatLng(temp.getLatitude(), temp.getLongitude());
             endMarker = new MarkerOptions().position(currentLatLng).title("Final Location");
             map.addMarker(endMarker);
-            //map.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+            endAltitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getAltitude();
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 18.0f));
             Button tempCast = (Button) view;
             tempCast.setEnabled(false);
             stopTime = System.currentTimeMillis();
             time = (stopTime - startTime);
             time = time / 1000;
+            //distance in meters
+            System.out.println(endMarker.getPosition().latitude);
+            distance = getDistance(startMarker.getPosition().latitude, endMarker.getPosition().latitude,
+                    startMarker.getPosition().longitude, endMarker.getPosition().longitude,
+                   startAltitude, endAltitude);
         }
 
     }
