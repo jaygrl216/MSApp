@@ -66,13 +66,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
         map.getUiSettings().setZoomControlsEnabled(true);
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-
     }
 
 
@@ -88,8 +81,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String strCurrentSpeed = fmt.toString();
         strCurrentSpeed = strCurrentSpeed.replace(' ', '0');
         String strUnits = "feet per minute";
-        TextView txtCurrentSpeed = (TextView)this.findViewById(R.id.txtCurrentSpeed);
-        txtCurrentSpeed.setText("Current speed: "+ strCurrentSpeed + " " + strUnits);
     }
 
     //distance function was created by stackoverflow user David George
@@ -165,6 +156,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             distance = getDistance(startMarker.getPosition().latitude, endMarker.getPosition().latitude,
                     startMarker.getPosition().longitude, endMarker.getPosition().longitude,
                    startAltitude, endAltitude);
+            TextView txtCurrentSpeed = (TextView)this.findViewById(R.id.txtCurrentSpeed);
+            txtCurrentSpeed.setText("Current speed: " + (distance/time) + " M/S");
         }
 
     }
