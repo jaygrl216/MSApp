@@ -5,4 +5,25 @@
     android:layout_height="match_parent"
     tools:context="com.example.msapp.WelcomeActivity">
 
+    <Button
+        android:id="@+id/outside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Outside Walk Test"
+        android:textSize="18sp"
+        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/key"
+        android:layout_centerHorizontal="true"
+        android:onClick="outsideTest"/>
+
+    <Button
+        android:id="@+id/key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#46C7E0"
+        android:text="Key-Pair Test"
+        android:textSize="18sp"
+        android:onClick="keyTest"/>
 </RelativeLayout>

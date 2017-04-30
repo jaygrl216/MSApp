@@ -7,7 +7,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light"
+        android:label="MSApp">
 
         <!-- <activity android:name=".MainActivity"> -->
         <!-- <intent-filter> -->
@@ -29,17 +30,19 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAf9xWQbZq6jkiA6CEb0vGKQhGPPivI-dM" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
+        <activity android:name=".MapsActivity">
+
+        </activity>
+        <activity android:name=".WelcomeActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".KeyActivity"></activity>
+        <activity android:name=".KeyActivity">
+
+        </activity>
     </application>
 
 </manifest>
