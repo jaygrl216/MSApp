@@ -7,23 +7,59 @@
     tools:context="com.example.msapp.WelcomeActivity">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView2"
-        android:layout_alignStart="@+id/imageView2"
-        android:layout_below="@+id/imageView2"
-        android:text=" 1  2  3  4  5  6  7  8"
-        android:textSize="45sp" />
-
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
+        android:id="@+id/imageView"
+        android:layout_width="324dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="23dp"
+        android:layout_x="123dp"
+        android:layout_y="18dp"
         app:srcCompat="@drawable/key"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="147dp"
+        android:layout_y="57dp"
+        android:text=" 1  2  3  4  5  6  7  8"
+        android:textColor="#000"
+        android:textSize="34sp"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginStart="21dp" />
+
+    <Button
+        android:id="@+id/speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="214dp"
+        android:layout_y="121dp"
+        android:layout_centerInParent="true"
+        android:onClick="startSpeechTest"
+        android:text="Start Speech Test" />
+
+    <Button
+        android:id="@+id/normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="217dp"
+        android:layout_y="180dp"
+        android:onClick="startNormalTest"
+        android:text="Start Normal Test"
+        android:layout_below="@+id/speech"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/instructions2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Match the symbol with the corresponding number. Please select either the normalized test or the speech test."
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
