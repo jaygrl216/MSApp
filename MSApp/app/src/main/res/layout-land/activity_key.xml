@@ -27,8 +27,8 @@
         android:text=" 1  2  3  4  5  6  7  8"
         android:textColor="#000"
         android:textSize="34sp"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignStart="@+id/imageView2"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
         android:layout_marginStart="21dp" />
 
     <Button
@@ -59,7 +59,16 @@
         android:text="Match the symbol with the corresponding number. Please select either the normalized test or the speech test."
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignTop="@+id/imageView"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/shape_star"
+        android:layout_alignTop="@+id/speech"
+        android:layout_toStartOf="@+id/imageView"
+        android:layout_marginTop="35dp" />
 
 </RelativeLayout>
