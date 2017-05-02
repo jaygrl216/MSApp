@@ -52,7 +52,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int numCorrect = 0;
     private int numWrong = 0;
     private int numTotal = 0;
-    private int timeRemaining = 90;
+    private int timeRemaining = 15;
     private boolean startTest = false;
     private int chosen1 = 0;
     private int chosen2 = 0;
@@ -177,6 +177,20 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         totalTime /= 1000;
         responseTimes.add(totalTime);
         numOfResponses++;
+        //initializing hash1.
+
+        hash1.put(1, 0.0);
+        hash1.put(2, 0.0);
+        hash1.put(3, 0.0);
+        hash1.put(4, 0.0);
+        hash1.put(5, 0.0);
+        hash1.put(6, 0.0);
+        hash1.put(7, 0.0);
+        hash1.put(8, 0.0);
+        hash1.put(9, 0.0);
+
+
+
         switch(chosenSymbol){
             case 1:
                 chosen1++;
@@ -342,8 +356,64 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     normalStartButton.setVisibility(View.INVISIBLE);
 
                     if(!startTest){
+                        button1 = (Button) findViewById(R.id.button_1);
+                        button1.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(1);
+                            }
+                        });
+
+                        button2 = (Button) findViewById(R.id.button_2);
+                        button2.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(2);
+                            }
+                        });
+
+                        button3 = (Button) findViewById(R.id.button_3);
+                        button3.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(3);
+                            }
+                        });
+
+                        button4 = (Button) findViewById(R.id.button_4);
+                        button4.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(4);
+                            }
+                        });
+
+                        button5 = (Button) findViewById(R.id.button_5);
+                        button5.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(5);
+                            }
+                        });
+
+                        button6 = (Button) findViewById(R.id.button_6);
+                        button6.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(6);
+                            }
+                        });
+
+                        button7 = (Button) findViewById(R.id.button_7);
+                        button7.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(7);
+                            }
+                        });
+
+                        button8 = (Button) findViewById(R.id.button_8);
+                        button8.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(8);
+                            }
+                        });
                         firstTime = System.currentTimeMillis();
-                        new CountDownTimer(90000, 1000) {
+
+                        new CountDownTimer(15000, 1000) {
                             public void onTick(long millisUntilFinished) {
                                 normalTimer.setText("" +--timeRemaining);
                             }
@@ -362,35 +432,35 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                     switch (i){
                                         case 1:
                                             sb.append("CIRCLE chosen " + chosen1+ " times\n");
-                                            sb.append("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
+                                            //sb.append("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
                                             break;
                                         case 2:
                                             sb.append("\nDOLLAR chosen " + chosen2+ " times\n");
-                                            sb.append("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
+                                            //sb.append("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
                                             break;
                                         case 3:
                                             sb.append("\nPLUS chosen " + chosen3+ " times\n");
-                                            sb.append("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
+                                            //sb.append("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
                                             break;
                                         case 4:
                                             sb.append("\nHASHTAG chosen " + chosen4+ " times\n");
-                                            sb.append("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
+                                            //sb.append("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
                                             break;
                                         case 5:
                                             sb.append("\nSQUARE chosen " + chosen5+ " times\n");
-                                            sb.append("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
+                                            //sb.append("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
                                             break;
                                         case 6:
                                             sb.append("\nSTAR chosen " + chosen6+ " times\n");
-                                            sb.append("Average time for STAR: " + hash1.get(i)/(double)chosen6);
+                                            //sb.append("Average time for STAR: " + hash1.get(i)/(double)chosen6);
                                             break;
                                         case 7:
                                             sb.append("\nTRIANGLE chosen " + chosen7+ " times\n");
-                                            sb.append("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
+                                            //sb.append("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
                                             break;
                                         case 8:
                                             sb.append("\nX chosen " + chosen8+ " times\n");
-                                            sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
+                                            //sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
                                             break;
                                         default:
                                             break;
@@ -411,61 +481,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 }
             });
 
-            button1 = (Button) findViewById(R.id.button_1);
-            button1.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(1);
-                }
-            });
 
-            button2 = (Button) findViewById(R.id.button_2);
-            button2.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(2);
-                }
-            });
-
-            button3 = (Button) findViewById(R.id.button_3);
-            button3.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(3);
-                }
-            });
-
-            button4 = (Button) findViewById(R.id.button_4);
-            button4.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(4);
-                }
-            });
-
-            button5 = (Button) findViewById(R.id.button_5);
-            button5.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(5);
-                }
-            });
-
-            button6 = (Button) findViewById(R.id.button_6);
-            button6.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(6);
-                }
-            });
-
-            button7 = (Button) findViewById(R.id.button_7);
-            button7.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(7);
-                }
-            });
-
-            button8 = (Button) findViewById(R.id.button_8);
-            button8.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    checkResultNormal(8);
-                }
-            });
 
 
 
@@ -532,7 +548,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         System.out.println("here");
         if(!startTest){
             firstTime = System.currentTimeMillis();
-            new CountDownTimer(90000, 1000) {
+            new CountDownTimer(15000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
