@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class KeyActivity extends AppCompatActivity implements View.OnClickListener {
@@ -32,8 +34,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button speech;
     private Button normal;
     private Intent intent;
+    private int numCorrect = 0;
+    private int numWrong = 0;
+    private int numTotal = 0;
     private int timeRemaining = 90;
     private boolean startTest = false;
+    private HashMap<Integer, List<String>> validPairings = new HashMap<>();
     int chosenSymbol = -1;
     private static final String TAG = "test";
     ArrayList<String> possibleAnswers = new ArrayList<String>(Arrays.asList("one", "two", "tell",
@@ -76,7 +82,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             if(possibleAnswers.contains(data.get(0))){
                 instructions.setTextColor(Color.GREEN);
                 System.out.println(data.get(0));
+
+                //common misintepration of numbers
+                if(data.get(0).toString().equals("sex")){
+                    data.set(0, "6");
+                }
+                else if(data.get(0).toString().equals("tell")){
+                    data.set(0, "2");
+                }
+
                 instructions.setText("We heard " + data.get(0)+". \nPlease say the next one!");
+                checkResult(data.get(0).toString());
                 randomizeSymbol();
             }
             else{
@@ -93,6 +109,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         {
 
         }
+    }
+
+    public void checkResult(String voiceResult){
+        if(validPairings.get(chosenSymbol).contains(voiceResult)){
+            numCorrect += 1;
+            System.out.println("Correct lol");
+        }else{
+            numWrong += 1;
+            System.out.println("wrong :(");
+        }
+        numTotal += 1;
     }
 
     public void randomizeSymbol(){
@@ -135,6 +162,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_key);
+        //inititating validPairings
+        validPairings.put(1, Arrays.asList("one", "1"));
+        validPairings.put(2, Arrays.asList("two", "2", "tell"));
+        validPairings.put(3, Arrays.asList("three", "3", "tree"));
+        validPairings.put(4, Arrays.asList("four", "4"));
+        validPairings.put(5, Arrays.asList("five", "5"));
+        validPairings.put(6, Arrays.asList("six", "6", "sex"));
+        validPairings.put(7, Arrays.asList("seven", "7"));
+        validPairings.put(8, Arrays.asList("eight", "8", "ate"));
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             instructions = (TextView) findViewById(R.id.instructions);
@@ -203,7 +239,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 }
                 public void onFinish() {
                     txtTimer.setTextColor(Color.BLUE);
-                    txtTimer.setText("Test is over!");
+                    txtTimer.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
                     mic.setOnClickListener(null);
                     //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
                 }
