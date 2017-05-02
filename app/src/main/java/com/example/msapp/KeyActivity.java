@@ -19,13 +19,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class KeyActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
-    private TextView speechInfo;
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -33,12 +34,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button speech;
     private Button normal;
     private Intent intent;
-    private int timeRemaining = 90;
-    private int curAns = -1;
-    private int curResult = -1;
     private int numCorrect = 0;
+    private int numWrong = 0;
     private int numTotal = 0;
+    private int timeRemaining = 90;
     private boolean startTest = false;
+    private HashMap<Integer, List<String>> validPairings = new HashMap<>();
     int chosenSymbol = -1;
     private static final String TAG = "test";
     ArrayList<String> possibleAnswers = new ArrayList<String>(Arrays.asList("one", "two", "tell",
@@ -72,88 +73,31 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
         public void onError(int error)
         {
-            speechInfo.setTextColor(Color.RED);
-            speechInfo.setText("We didn't quite get that!\n Please say your number again!");
+            instructions.setTextColor(Color.RED);
+            instructions.setText("We didn't quite get that!\n Please say your number again!");
         }
         public void onResults(Bundle results)
         {
             ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if(possibleAnswers.contains(data.get(0))){
-                speechInfo.setTextColor(Color.GREEN);
+                instructions.setTextColor(Color.GREEN);
                 System.out.println(data.get(0));
-                speechInfo.setText("We heard " + data.get(0)+". \nPlease say the next one!");
 
-                switch (data.get(0).toString()){
-                    case "one":
-                        curResult = 1;
-                        break;
-                    case "two":
-                        curResult = 2;
-                        break;
-                    case "tell":
-                        curResult = 2;
-                        break;
-                    case "three":
-                        curResult = 3;
-                        break;
-                    case "four":
-                        curResult = 4;
-                        break;
-                    case "five":
-                        curResult = 5;
-                        break;
-                    case "six":
-                        curResult = 6;
-                        break;
-                    case "sex":
-                        curResult = 6;
-                        break;
-                    case "seven":
-                        curResult = 7;
-                        break;
-                    case "eight":
-                        curResult = 8;
-                        break;
-                    case "1":
-                        curResult = 1;
-                        break;
-                    case "2":
-                        curResult = 2;
-                        break;
-                    case "3":
-                        curResult = 3;
-                        break;
-                    case "4":
-                        curResult = 4;
-                        break;
-                    case "5":
-                        curResult = 5;
-                        break;
-                    case "6":
-                        curResult = 6;
-                        break;
-                    case "7":
-                        curResult = 7;
-                        break;
-                    case "8":
-                        curResult = 8;
-                        break;
-                    default:
-                        curResult = -1;
-                        break;
+                //common misintepration of numbers
+                if(data.get(0).toString().equals("sex")){
+                    data.set(0, "6");
+                }
+                else if(data.get(0).toString().equals("tell")){
+                    data.set(0, "2");
                 }
 
-                if(curAns == curResult) {
-                    numCorrect++;
-                }
-                numTotal++;
-
-
+                instructions.setText("We heard " + data.get(0)+". \nPlease say the next one!");
+                checkResult(data.get(0).toString());
                 randomizeSymbol();
             }
             else{
-                speechInfo.setTextColor(Color.RED);
-                speechInfo.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
+                instructions.setTextColor(Color.RED);
+                instructions.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
                 //sr.startListening(intent);
             }
         }
@@ -167,6 +111,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    public void checkResult(String voiceResult){
+        if(validPairings.get(chosenSymbol).contains(voiceResult)){
+            numCorrect += 1;
+            System.out.println("Correct lol");
+        }else{
+            numWrong += 1;
+            System.out.println("wrong :(");
+        }
+        numTotal += 1;
+    }
+
     public void randomizeSymbol(){
         Random r = new Random();
         chosenSymbol = r.nextInt(8 - 1 + 1) + 1;
@@ -174,35 +129,27 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         switch (chosenSymbol){
             case 1:
                 symbol.setImageResource(R.drawable.shape_circle);
-                curAns = 1;
                 break;
             case 2:
                 symbol.setImageResource(R.drawable.shape_dollar);
-                curAns = 2;
                 break;
             case 3:
                 symbol.setImageResource(R.drawable.shape_plus);
-                curAns = 3;
                 break;
             case 4:
                 symbol.setImageResource(R.drawable.shape_pound);
-                curAns = 4;
                 break;
             case 5:
                 symbol.setImageResource(R.drawable.shape_square);
-                curAns = 5;
                 break;
             case 6:
                 symbol.setImageResource(R.drawable.shape_star);
-                curAns = 6;
                 break;
             case 7:
                 symbol.setImageResource(R.drawable.shape_triangle);
-                curAns = 7;
                 break;
             case 8:
                 symbol.setImageResource(R.drawable.shape_x);
-                curAns = 8;
                 break;
             default:
                 System.out.println("not working");
@@ -215,6 +162,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_key);
+        //inititating validPairings
+        validPairings.put(1, Arrays.asList("one", "1"));
+        validPairings.put(2, Arrays.asList("two", "2", "tell"));
+        validPairings.put(3, Arrays.asList("three", "3", "tree"));
+        validPairings.put(4, Arrays.asList("four", "4"));
+        validPairings.put(5, Arrays.asList("five", "5"));
+        validPairings.put(6, Arrays.asList("six", "6", "sex"));
+        validPairings.put(7, Arrays.asList("seven", "7"));
+        validPairings.put(8, Arrays.asList("eight", "8", "ate"));
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             instructions = (TextView) findViewById(R.id.instructions);
@@ -228,14 +184,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             mic = (ImageButton) findViewById(R.id.speak);
             normal = (Button) findViewById(R.id.normal);
             speech = (Button) findViewById(R.id.speech);
-            speechInfo = (TextView) findViewById(R.id.speakInfo);
 
 
             key.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
             symbol.setVisibility(View.INVISIBLE);
             mic.setVisibility(View.INVISIBLE);
-            speechInfo.setVisibility(View.INVISIBLE);
 
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
@@ -247,16 +201,14 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void startSpeechTest(View v) {
-        speechInfo.setText("Speak now!");
+        instructions.setText("Speak now!");
         speech.setVisibility(View.INVISIBLE);
         normal.setVisibility(View.INVISIBLE);
-        instructions.setVisibility(View.INVISIBLE);
 
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
         mic.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
-        speechInfo.setVisibility(View.VISIBLE);
 
     }
 
@@ -287,13 +239,9 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 }
                 public void onFinish() {
                     txtTimer.setTextColor(Color.BLUE);
-                    txtTimer.setText("Test is over!");
+                    txtTimer.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
                     mic.setOnClickListener(null);
-                    double score = ((numCorrect/numTotal) * 100)/90;
-                    System.out.println(numCorrect);
-                    System.out.println(numTotal);
-                    speechInfo.setText("Score: " + score);
-
+                    //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
                 }
             }.start();
             startTest = true;
