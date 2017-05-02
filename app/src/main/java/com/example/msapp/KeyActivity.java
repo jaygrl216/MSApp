@@ -27,6 +27,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
+    private TextView speechInfo;
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -37,7 +38,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int numCorrect = 0;
     private int numWrong = 0;
     private int numTotal = 0;
-    private int timeRemaining = 90;
+    private int timeRemaining = 15;
     private boolean startTest = false;
     private HashMap<Integer, List<String>> validPairings = new HashMap<>();
     int chosenSymbol = -1;
@@ -73,14 +74,14 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
         public void onError(int error)
         {
-            instructions.setTextColor(Color.RED);
-            instructions.setText("We didn't quite get that!\n Please say your number again!");
+            speechInfo.setTextColor(Color.RED);
+            speechInfo.setText("We didn't quite get that!\n Please say your number again!");
         }
         public void onResults(Bundle results)
         {
             ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if(possibleAnswers.contains(data.get(0))){
-                instructions.setTextColor(Color.GREEN);
+                speechInfo.setTextColor(Color.GREEN);
                 System.out.println(data.get(0));
 
                 //common misintepration of numbers
@@ -91,13 +92,13 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     data.set(0, "2");
                 }
 
-                instructions.setText("We heard " + data.get(0)+". \nPlease say the next one!");
+                speechInfo.setText("We heard " + data.get(0)+". \nPlease say the next one!");
                 checkResult(data.get(0).toString());
                 randomizeSymbol();
             }
             else{
-                instructions.setTextColor(Color.RED);
-                instructions.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
+                speechInfo.setTextColor(Color.RED);
+                speechInfo.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
                 //sr.startListening(intent);
             }
         }
@@ -203,9 +204,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void startSpeechTest(View v) {
-        instructions.setText("Speak now!");
+        speechInfo.setText("Speak now!");
         speech.setVisibility(View.INVISIBLE);
         normal.setVisibility(View.INVISIBLE);
+        instructions.setVisibility(View.INVISIBLE);
 
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
@@ -236,13 +238,13 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         System.out.println("here");
         if(!startTest){
-            new CountDownTimer(90000, 1000) {
+            new CountDownTimer(15000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
                 public void onFinish() {
-                    txtTimer.setTextColor(Color.BLUE);
-                    txtTimer.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
+                    speechInfo.setTextColor(Color.BLUE);
+                    speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
                     mic.setOnClickListener(null);
                     //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
                 }
