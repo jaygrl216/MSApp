@@ -179,16 +179,6 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         numOfResponses++;
         //initializing hash1.
 
-        hash1.put(1, 0.0);
-        hash1.put(2, 0.0);
-        hash1.put(3, 0.0);
-        hash1.put(4, 0.0);
-        hash1.put(5, 0.0);
-        hash1.put(6, 0.0);
-        hash1.put(7, 0.0);
-        hash1.put(8, 0.0);
-        hash1.put(9, 0.0);
-
 
 
         switch(chosenSymbol){
@@ -330,6 +320,16 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         validPairings.put(7, Arrays.asList("seven", "7"));
         validPairings.put(8, Arrays.asList("eight", "8", "ate"));
 
+        hash1.put(1, 0.0);
+        hash1.put(2, 0.0);
+        hash1.put(3, 0.0);
+        hash1.put(4, 0.0);
+        hash1.put(5, 0.0);
+        hash1.put(6, 0.0);
+        hash1.put(7, 0.0);
+        hash1.put(8, 0.0);
+        hash1.put(9, 0.0);
+
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             instructions = (TextView) findViewById(R.id.instructions);
             instructions.setText(R.string.instructions);
@@ -432,35 +432,35 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                     switch (i){
                                         case 1:
                                             sb.append("CIRCLE chosen " + chosen1+ " times\n");
-                                            //sb.append("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
+                                            sb.append("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
                                             break;
                                         case 2:
                                             sb.append("\nDOLLAR chosen " + chosen2+ " times\n");
-                                            //sb.append("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
+                                            sb.append("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
                                             break;
                                         case 3:
                                             sb.append("\nPLUS chosen " + chosen3+ " times\n");
-                                            //sb.append("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
+                                            sb.append("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
                                             break;
                                         case 4:
                                             sb.append("\nHASHTAG chosen " + chosen4+ " times\n");
-                                            //sb.append("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
+                                            sb.append("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
                                             break;
                                         case 5:
                                             sb.append("\nSQUARE chosen " + chosen5+ " times\n");
-                                            //sb.append("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
+                                            sb.append("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
                                             break;
                                         case 6:
                                             sb.append("\nSTAR chosen " + chosen6+ " times\n");
-                                            //sb.append("Average time for STAR: " + hash1.get(i)/(double)chosen6);
+                                            sb.append("Average time for STAR: " + hash1.get(i)/(double)chosen6);
                                             break;
                                         case 7:
                                             sb.append("\nTRIANGLE chosen " + chosen7+ " times\n");
-                                            //sb.append("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
+                                            sb.append("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
                                             break;
                                         case 8:
                                             sb.append("\nX chosen " + chosen8+ " times\n");
-                                            //sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
+                                            sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
                                             break;
                                         default:
                                             break;

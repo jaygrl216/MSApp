@@ -12,7 +12,6 @@
     <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" />
     </list>
     <ignored path="MSApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,14 +69,14 @@
       <file leaf-file-name="KeyActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="412" column="27" selection-start-line="412" selection-start-column="27" selection-end-line="412" selection-end-column="27" />
+            <state relative-caret-position="315">
+              <caret line="315" column="66" selection-start-line="315" selection-start-column="66" selection-end-line="315" selection-end-column="66" />
               <folding>
                 <element signature="e#1995#2012#0" expanded="true" />
                 <element signature="e#2323#2331#0" expanded="true" />
                 <element signature="e#2781#2789#0" expanded="true" />
                 <element signature="e#11243#11264#0" expanded="true" />
-                <element signature="e#12382#19714#0" expanded="true" />
+                <element signature="e#12382#19698#0" expanded="true" />
                 <element signature="e#12684#12878#0" expanded="true" />
                 <element signature="e#12877#12878#0" expanded="true" />
                 <element signature="e#13005#13199#0" expanded="true" />
@@ -94,7 +93,7 @@
                 <element signature="e#14803#14804#0" expanded="true" />
                 <element signature="e#14931#15125#0" expanded="true" />
                 <element signature="e#15124#15125#0" expanded="true" />
-                <element signature="e#19713#19714#0" expanded="true" />
+                <element signature="e#19697#19698#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -3046,14 +3045,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="412" column="27" selection-start-line="412" selection-start-column="27" selection-end-line="412" selection-end-column="27" />
+        <state relative-caret-position="315">
+          <caret line="315" column="66" selection-start-line="315" selection-start-column="66" selection-end-line="315" selection-end-column="66" />
           <folding>
             <element signature="e#1995#2012#0" expanded="true" />
             <element signature="e#2323#2331#0" expanded="true" />
             <element signature="e#2781#2789#0" expanded="true" />
             <element signature="e#11243#11264#0" expanded="true" />
-            <element signature="e#12382#19714#0" expanded="true" />
+            <element signature="e#12382#19698#0" expanded="true" />
             <element signature="e#12684#12878#0" expanded="true" />
             <element signature="e#12877#12878#0" expanded="true" />
             <element signature="e#13005#13199#0" expanded="true" />
@@ -3070,7 +3069,7 @@
             <element signature="e#14803#14804#0" expanded="true" />
             <element signature="e#14931#15125#0" expanded="true" />
             <element signature="e#15124#15125#0" expanded="true" />
-            <element signature="e#19713#19714#0" expanded="true" />
+            <element signature="e#19697#19698#0" expanded="true" />
           </folding>
         </state>
       </provider>
