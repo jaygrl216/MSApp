@@ -125,7 +125,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 symbol.setImageResource(R.drawable.shape_x);
                 break;
             default:
-                System.out.println("not wroking");
+                System.out.println("not working");
                 break;
         }
 
@@ -158,8 +158,9 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
             sr.setRecognitionListener(new Listener());
+            randomizeSymbol();
         }
-        randomizeSymbol();
+
 
     }
 
