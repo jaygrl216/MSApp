@@ -32,32 +32,31 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     ArrayList<String> possibleAnswers = new ArrayList<String>(Arrays.asList("one", "two", "tell",
             "three","four","five",
             "six","seven","eight",
-            "nine", "1", "2",
+            "sex", "1", "2",
             "3", "4", "5",
-            "6", "7", "8",
-            "9"));
+            "6", "7", "8"));
 
-    private class Listener implements RecognitionListener
+   private class Listener implements RecognitionListener
     {
         public void onReadyForSpeech(Bundle params)
         {
-
+            System.out.println("Ready");
         }
         public void onBeginningOfSpeech()
         {
-
+            System.out.println("Beginning");
         }
         public void onRmsChanged(float rmsdB)
         {
-
+            System.out.println("Changed");
         }
         public void onBufferReceived(byte[] buffer)
         {
-
+            System.out.println("Buffer Received");
         }
         public void onEndOfSpeech()
         {
-
+            System.out.println("Done");
         }
         public void onError(int error)
         {
@@ -113,7 +112,6 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
 
         }
-        System.out.println("piepie");
 
     }
 
@@ -126,7 +124,6 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         numbers.setVisibility(View.VISIBLE);
         mic.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
-
 
     }
 
@@ -149,14 +146,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void onClick(View v) {
+        System.out.println("here");
         if (v.getId() == R.id.speak)
         {
             instructions.setText("Speak now!");
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
             intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,"voice.recognition.test");
+
             intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,5);
             sr.startListening(intent);
+
         }
     }
 }
