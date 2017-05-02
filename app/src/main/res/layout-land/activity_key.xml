@@ -120,8 +120,8 @@
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:rowCount="3"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true">
+        android:layout_below="@+id/instructions2"
+        android:layout_alignStart="@+id/timer">
 
         <Button android:text="1"
             android:id="@+id/button_1"/>
