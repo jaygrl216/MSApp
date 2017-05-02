@@ -64,8 +64,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int chosen8 = 0;
     private int chosen9 = 0;
     private HashMap<Integer, Double> hash1 = new HashMap<Integer, Double>();
-
+    private Button advancedStatsButton;
+    private TextView statsTextview;
     private HashMap<Integer, List<String>> validPairings = new HashMap<>();
+    private StringBuffer sb;
     int chosenSymbol = -1;
     private static final String TAG = "test";
     ArrayList<String> possibleAnswers = new ArrayList<String>(Arrays.asList("one", "two", "tell",
@@ -318,6 +320,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             instructions = (TextView) findViewById(R.id.instructions);
             instructions.setText(R.string.instructions);
         } else {
+            advancedStatsButton = (Button) findViewById(R.id.advancedStatsButton);
+            advancedStatsButton.setVisibility(View.INVISIBLE);
+            statsTextview = (TextView) findViewById(R.id.statsTextview);
+            statsTextview.setVisibility(View.INVISIBLE);
             instructions = (TextView) findViewById(R.id.instructions2);
             numbers = (TextView) findViewById(R.id.numbers);
             txtTimer = (TextView) findViewById(R.id.timer);
@@ -334,6 +340,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             normalStartButton.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
                     normalStartButton.setVisibility(View.INVISIBLE);
+
                     if(!startTest){
                         firstTime = System.currentTimeMillis();
                         new CountDownTimer(90000, 1000) {
@@ -350,46 +357,50 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                     averageTime = totalTime/numOfResponses;
                                     System.out.println("average time is " + averageTime);
                                 }
+                                sb = new StringBuffer();
                                 for (int i = 0; i < 9; i++){
                                     switch (i){
                                         case 1:
-                                            System.out.println("CIRCLE chosen " + chosen1+ " times");
-                                            System.out.println("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
+                                            sb.append("CIRCLE chosen " + chosen1+ " times\n");
+                                            sb.append("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
                                             break;
                                         case 2:
-                                            System.out.println("DOLLAR chosen " + chosen2+ " times");
-                                            System.out.println("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
+                                            sb.append("\nDOLLAR chosen " + chosen2+ " times\n");
+                                            sb.append("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
                                             break;
                                         case 3:
-                                            System.out.println("PLUS chosen " + chosen3+ " times");
-                                            System.out.println("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
+                                            sb.append("\nPLUS chosen " + chosen3+ " times\n");
+                                            sb.append("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
                                             break;
                                         case 4:
-                                            System.out.println("HASHTAG chosen " + chosen4+ " times");
-                                            System.out.println("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
+                                            sb.append("\nHASHTAG chosen " + chosen4+ " times\n");
+                                            sb.append("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
                                             break;
                                         case 5:
-                                            System.out.println("SQUARE chosen " + chosen5+ " times");
-                                            System.out.println("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
+                                            sb.append("\nSQUARE chosen " + chosen5+ " times\n");
+                                            sb.append("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
                                             break;
                                         case 6:
-                                            System.out.println("STAR chosen " + chosen6+ " times");
-                                            System.out.println("Average time for STAR: " + hash1.get(i)/(double)chosen6);
+                                            sb.append("\nSTAR chosen " + chosen6+ " times\n");
+                                            sb.append("Average time for STAR: " + hash1.get(i)/(double)chosen6);
                                             break;
                                         case 7:
-                                            System.out.println("TRIANGLE chosen " + chosen7+ " times");
-                                            System.out.println("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
+                                            sb.append("\nTRIANGLE chosen " + chosen7+ " times\n");
+                                            sb.append("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
                                             break;
                                         case 8:
-                                            System.out.println("X chosen " + chosen8+ " times");
-                                            System.out.println("Average time for X: " + hash1.get(i)/(double)chosen8);
+                                            sb.append("\nX chosen " + chosen8+ " times\n");
+                                            sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
                                             break;
                                         default:
                                             break;
                                     }
                                 }
+                                statsTextview.setText(sb);
+
                                 numericKeypad.setVisibility(View.INVISIBLE);
                                 normalTimer.setVisibility(View.INVISIBLE);
+                                advancedStatsButton.setVisibility(View.VISIBLE);
                                 speechInfo.setVisibility(View.VISIBLE);
                                 speechInfo.setTextColor(Color.BLUE);
                                 speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries" + "\nAverage Time: " + averageTime);
@@ -455,6 +466,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     checkResultNormal(8);
                 }
             });
+
+
 
 
             key.setVisibility(View.INVISIBLE);
@@ -553,5 +566,25 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             sr.startListening(intent);
 
         }
+    }
+
+    public void showAdvancedStats(View v){
+        speech.setVisibility(View.INVISIBLE);
+        normal.setVisibility(View.INVISIBLE);
+        instructions.setVisibility(View.INVISIBLE);
+        txtTimer.setVisibility(View.INVISIBLE);
+
+        normalStartButton.setVisibility(View.INVISIBLE);
+
+        numericKeypad.setVisibility(View.INVISIBLE);
+        normalTimer.setVisibility(View.INVISIBLE);
+        key.setVisibility(View.INVISIBLE);
+        numbers.setVisibility(View.INVISIBLE);
+        symbol.setVisibility(View.INVISIBLE);
+        speechInfo.setVisibility(View.INVISIBLE);
+        advancedStatsButton.setVisibility(View.INVISIBLE);
+
+        statsTextview.setVisibility(View.VISIBLE);
+
     }
 }

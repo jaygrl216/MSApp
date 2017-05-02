@@ -159,6 +159,17 @@
         android:layout_below="@+id/normal"
         android:layout_centerHorizontal="true"
         android:text="Click To Begin" />
+    <Button
+        android:id="@+id/advancedStatsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Advanced Stats"
+        android:onClick="showAdvancedStats"/>
+    <TextView
+        android:id="@+id/statsTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 
 </RelativeLayout>
