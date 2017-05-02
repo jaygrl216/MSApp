@@ -94,7 +94,6 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
                 speechInfo.setText("We heard " + data.get(0)+". \nPlease say the next one!");
                 checkResult(data.get(0).toString());
-                randomizeSymbol();
             }
             else{
                 speechInfo.setTextColor(Color.RED);
@@ -115,12 +114,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     public void checkResult(String voiceResult){
         if(validPairings.get(chosenSymbol).contains(voiceResult)){
             numCorrect += 1;
-            System.out.println("Correct lol");
         }else{
             numWrong += 1;
-            System.out.println("wrong :(");
         }
         numTotal += 1;
+        randomizeSymbol();
     }
 
     public void randomizeSymbol(){
@@ -243,6 +241,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
                 public void onFinish() {
+                    txtTimer.setVisibility(View.INVISIBLE);
                     speechInfo.setTextColor(Color.BLUE);
                     speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
                     mic.setOnClickListener(null);
