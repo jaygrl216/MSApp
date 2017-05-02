@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lab11</string>
+    <string name = "button_name">Ingrese el titulo</string>
+    <string name ="version_name">Versíon</string>
+</resources>

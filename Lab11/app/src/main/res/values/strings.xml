@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Lab11</string>
+    <string name = "button_name">Enter Title</string>
+    <string name ="version_name">Version</string>
+
+</resources>
