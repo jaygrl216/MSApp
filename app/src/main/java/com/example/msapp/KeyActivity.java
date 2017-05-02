@@ -33,6 +33,14 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private TextView normalTimer;
     private TextView speechInfo;
     private GridLayout numericKeypad;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -126,6 +134,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         randomizeSymbol();
     }
 
+    public void checkResultNormal(int num){
+
+
+    }
+
     public void randomizeSymbol(){
         Random r = new Random();
         chosenSymbol = r.nextInt(8 - 1 + 1) + 1;
@@ -192,6 +205,65 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             speechInfo = (TextView) findViewById(R.id.speakInfo);
             numericKeypad = (GridLayout) findViewById(R.id.numericKeypad);
 
+            button1 = (Button) findViewById(R.id.button_1);
+            button1.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button2 = (Button) findViewById(R.id.button_2);
+            button2.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button3 = (Button) findViewById(R.id.button_3);
+            button3.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button4 = (Button) findViewById(R.id.button_4);
+            button4.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button5 = (Button) findViewById(R.id.button_5);
+            button5.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button6 = (Button) findViewById(R.id.button_6);
+            button6.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button7 = (Button) findViewById(R.id.button_7);
+            button7.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+            button8 = (Button) findViewById(R.id.button_8);
+            button8.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+
+                }
+            });
+
+
+
+
 
             key.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
@@ -245,6 +317,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         normalTimer.setVisibility(View.VISIBLE);
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
+        symbol.setVisibility(View.VISIBLE);
 
     }
 

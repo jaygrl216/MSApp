@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="inserted the numeric keypad">
+    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" />
@@ -43,7 +43,7 @@
     <favorites_list name="MSApp" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5436893">
+    <splitter split-orientation="horizontal" split-proportion="0.55781114">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
           <file leaf-file-name="activity_welcome.xml" pinned="false" current-in-tab="false">
@@ -73,7 +73,7 @@
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="737">
-                  <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+                  <caret line="149" column="31" selection-start-line="149" selection-start-column="31" selection-end-line="149" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
@@ -85,10 +85,10 @@
           <file leaf-file-name="KeyActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1866">
-                  <caret line="118" column="24" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="24" />
+                <state relative-caret-position="256">
+                  <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
                   <folding>
-                    <element signature="e#6137#6158#0" expanded="true" />
+                    <element signature="e#6422#6443#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -101,8 +101,8 @@
           <file leaf-file-name="activity_key.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1270">
-                  <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+                <state relative-caret-position="477">
+                  <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -2671,15 +2671,22 @@
       <option name="project" value="LOCAL" />
       <updated>1493701311192</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="inserted the numeric keypad">
+      <created>1493702592581</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1493702592581</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2875354" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16713881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3104,7 +3111,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="737">
-          <caret line="141" column="31" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+          <caret line="149" column="31" selection-start-line="149" selection-start-column="31" selection-end-line="149" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -3114,10 +3121,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1866">
-          <caret line="118" column="24" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="24" />
+        <state relative-caret-position="256">
+          <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
           <folding>
-            <element signature="e#6137#6158#0" expanded="true" />
+            <element signature="e#6422#6443#0" expanded="true" />
           </folding>
         </state>
       </provider>
