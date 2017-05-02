@@ -54,6 +54,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int numTotal = 0;
     private int timeRemaining = 90;
     private boolean startTest = false;
+    private int chosen1 = 0;
+    private int chosen2 = 0;
+    private int chosen3 = 0;
+    private int chosen4 = 0;
+    private int chosen5 = 0;
+    private int chosen6 = 0;
+    private int chosen7 = 0;
+    private int chosen8 = 0;
+    private int chosen9 = 0;
+    private HashMap<Integer, Double> hash1 = new HashMap<Integer, Double>();
+
     private HashMap<Integer, List<String>> validPairings = new HashMap<>();
     int chosenSymbol = -1;
     private static final String TAG = "test";
@@ -156,6 +167,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         else{
             numWrong += 1;
         }
+
         numTotal += 1;
         secondTime = System.currentTimeMillis();
         System.out.println(firstTime + " " + secondTime);
@@ -163,6 +175,90 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         totalTime /= 1000;
         responseTimes.add(totalTime);
         numOfResponses++;
+        switch(chosenSymbol){
+            case 1:
+                chosen1++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+
+                break;
+            case 2:
+                chosen2++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            case 3:
+                chosen3++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            case 4:
+                chosen4++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            case 5:
+                chosen5++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            case 6:
+                chosen6++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            case 7:
+                chosen7++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            case 8:
+                chosen8++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+            default:
+                chosen9++;
+                if(hash1.get(chosenSymbol) == null){
+                    hash1.put(chosenSymbol, totalTime);
+                }else{
+                    double curr = hash1.get(chosenSymbol);
+                    hash1.put(chosenSymbol, curr+totalTime);
+                }
+                break;
+        }
         firstTime = System.currentTimeMillis();
         randomizeSymbol();
 
@@ -253,6 +349,44 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                     }
                                     averageTime = totalTime/numOfResponses;
                                     System.out.println("average time is " + averageTime);
+                                }
+                                for (int i = 0; i < 9; i++){
+                                    switch (i){
+                                        case 1:
+                                            System.out.println("CIRCLE chosen " + chosen1+ " times");
+                                            System.out.println("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
+                                            break;
+                                        case 2:
+                                            System.out.println("DOLLAR chosen " + chosen2+ " times");
+                                            System.out.println("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
+                                            break;
+                                        case 3:
+                                            System.out.println("PLUS chosen " + chosen3+ " times");
+                                            System.out.println("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
+                                            break;
+                                        case 4:
+                                            System.out.println("HASHTAG chosen " + chosen4+ " times");
+                                            System.out.println("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
+                                            break;
+                                        case 5:
+                                            System.out.println("SQUARE chosen " + chosen5+ " times");
+                                            System.out.println("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
+                                            break;
+                                        case 6:
+                                            System.out.println("STAR chosen " + chosen6+ " times");
+                                            System.out.println("Average time for STAR: " + hash1.get(i)/(double)chosen6);
+                                            break;
+                                        case 7:
+                                            System.out.println("TRIANGLE chosen " + chosen7+ " times");
+                                            System.out.println("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
+                                            break;
+                                        case 8:
+                                            System.out.println("X chosen " + chosen8+ " times");
+                                            System.out.println("Average time for X: " + hash1.get(i)/(double)chosen8);
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                 }
                                 numericKeypad.setVisibility(View.INVISIBLE);
                                 normalTimer.setVisibility(View.INVISIBLE);
@@ -385,7 +519,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         System.out.println("here");
         if(!startTest){
             firstTime = System.currentTimeMillis();
-            new CountDownTimer(15000, 1000) {
+            new CountDownTimer(90000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
