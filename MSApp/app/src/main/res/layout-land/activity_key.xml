@@ -80,4 +80,17 @@
         android:layout_alignBottom="@+id/normal"
         android:layout_toEndOf="@+id/numbers" />
 
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="147dp"
+        android:layout_y="57dp"
+        android:text="Time Remaining: 90"
+        android:textColor="#000"
+        android:textSize="34sp"
+        android:layout_below="@+id/normal"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_marginStart="21dp" />
+
 </RelativeLayout>

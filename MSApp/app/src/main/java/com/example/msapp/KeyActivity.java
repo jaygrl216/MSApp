@@ -2,6 +2,8 @@ package com.example.msapp;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -22,6 +24,7 @@ import java.util.Random;
 public class KeyActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView instructions;
     private TextView numbers;
+    private TextView txtTimer;
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -29,6 +32,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button speech;
     private Button normal;
     private Intent intent;
+    private int timeRemaining = 90;
+    private boolean startTest = false;
     int chosenSymbol = -1;
     private static final String TAG = "test";
     ArrayList<String> possibleAnswers = new ArrayList<String>(Arrays.asList("one", "two", "tell",
@@ -62,18 +67,20 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
         public void onError(int error)
         {
+            instructions.setTextColor(Color.RED);
             instructions.setText("We didn't quite get that!\n Please say your number again!");
         }
         public void onResults(Bundle results)
         {
             ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if(possibleAnswers.contains(data.get(0))){
+                instructions.setTextColor(Color.GREEN);
                 System.out.println(data.get(0));
                 instructions.setText("We heard " + data.get(0)+". \nPlease say the next one!");
                 randomizeSymbol();
-                System.out.println("dumb shit");
             }
             else{
+                instructions.setTextColor(Color.RED);
                 instructions.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
                 //sr.startListening(intent);
             }
@@ -135,11 +142,13 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         } else {
             instructions = (TextView) findViewById(R.id.instructions2);
             numbers = (TextView) findViewById(R.id.numbers);
+            txtTimer = (TextView) findViewById(R.id.timer);
             key = (ImageView) findViewById(R.id.imageView);
             symbol = (ImageView) findViewById(R.id.symbol);
             mic = (ImageButton) findViewById(R.id.speak);
             normal = (Button) findViewById(R.id.normal);
             speech = (Button) findViewById(R.id.speech);
+
 
             key.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
@@ -186,6 +195,20 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
     public void onClick(View v) {
         System.out.println("here");
+        if(!startTest){
+            new CountDownTimer(90000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                    txtTimer.setText("Time Remaining: " + --timeRemaining);
+                }
+                public void onFinish() {
+                    txtTimer.setTextColor(Color.BLUE);
+                    txtTimer.setText("Test is over!");
+                    mic.setOnClickListener(null);
+                    //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
+                }
+            }.start();
+            startTest = true;
+        }
         if (v.getId() == R.id.speak)
         {
             instructions.setText("Speak now!");
