@@ -240,7 +240,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     normalStartButton.setVisibility(View.INVISIBLE);
                     if(!startTest){
                         firstTime = System.currentTimeMillis();
-                        new CountDownTimer(15000, 1000) {
+                        new CountDownTimer(90000, 1000) {
                             public void onTick(long millisUntilFinished) {
                                 normalTimer.setText("" +--timeRemaining);
                             }
