@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private TextView txtTimer;
     private TextView normalTimer;
     private TextView speechInfo;
+    private GridLayout numericKeypad;
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -188,6 +190,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             normal = (Button) findViewById(R.id.normal);
             speech = (Button) findViewById(R.id.speech);
             speechInfo = (TextView) findViewById(R.id.speakInfo);
+            numericKeypad = (GridLayout) findViewById(R.id.numericKeypad);
 
 
             key.setVisibility(View.INVISIBLE);
@@ -195,6 +198,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             symbol.setVisibility(View.INVISIBLE);
             mic.setVisibility(View.INVISIBLE);
             speechInfo.setVisibility(View.INVISIBLE);
+            normalTimer.setVisibility(View.INVISIBLE);
+            numericKeypad.setVisibility(View.INVISIBLE);
 
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
@@ -235,6 +240,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         normal.setVisibility(View.INVISIBLE);
         instructions.setVisibility(View.INVISIBLE);
         txtTimer.setVisibility(View.INVISIBLE);
+
+        numericKeypad.setVisibility(View.VISIBLE);
         normalTimer.setVisibility(View.VISIBLE);
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
