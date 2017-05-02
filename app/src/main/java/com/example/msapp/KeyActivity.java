@@ -64,6 +64,14 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             "3", "4", "5",
             "6", "7", "8"));
 
+    //time
+    protected long firstTime = 0;
+    protected long secondTime = 0;
+    protected int numOfResponses = 0;
+    protected double totalTime = 0.00;
+    protected double averageTime = 0.00;
+    private ArrayList<Double> responseTimes = new ArrayList<Double>();
+
    private class Listener implements RecognitionListener
     {
         public void onReadyForSpeech(Bundle params)
@@ -132,6 +140,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             numWrong += 1;
         }
         numTotal += 1;
+        secondTime = System.currentTimeMillis();
+        totalTime = (secondTime - firstTime);
+        totalTime /= 1000;
+        responseTimes.add(totalTime);
+        numOfResponses++;
+        firstTime = System.currentTimeMillis();
         randomizeSymbol();
     }
 
@@ -143,6 +157,13 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             numWrong += 1;
         }
         numTotal += 1;
+        secondTime = System.currentTimeMillis();
+        System.out.println(firstTime + " " + secondTime);
+        totalTime = (secondTime - firstTime);
+        totalTime /= 1000;
+        responseTimes.add(totalTime);
+        numOfResponses++;
+        firstTime = System.currentTimeMillis();
         randomizeSymbol();
 
     }
@@ -218,16 +239,26 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 public void onClick(View v){
                     normalStartButton.setVisibility(View.INVISIBLE);
                     if(!startTest){
+                        firstTime = System.currentTimeMillis();
                         new CountDownTimer(15000, 1000) {
                             public void onTick(long millisUntilFinished) {
                                 normalTimer.setText("" +--timeRemaining);
                             }
                             public void onFinish() {
+                                if (numOfResponses != 0){
+                                    totalTime = 0;
+                                    for (int i = 0;i < responseTimes.size();i++){
+                                        totalTime += responseTimes.get(i);
+                                        System.out.println("time " + i + " is " + responseTimes.get(i));
+                                    }
+                                    averageTime = totalTime/numOfResponses;
+                                    System.out.println("average time is " + averageTime);
+                                }
                                 numericKeypad.setVisibility(View.INVISIBLE);
                                 normalTimer.setVisibility(View.INVISIBLE);
+                                speechInfo.setVisibility(View.VISIBLE);
                                 speechInfo.setTextColor(Color.BLUE);
-                                speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
-
+                                speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries" + "\nAverage Time: " + averageTime);
                             }
                         }.start();
                         startTest = true;
@@ -348,20 +379,29 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
-
     }
 
     public void onClick(View v) {
         System.out.println("here");
         if(!startTest){
+            firstTime = System.currentTimeMillis();
             new CountDownTimer(15000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
                 public void onFinish() {
+                    if (numOfResponses != 0){
+                        totalTime = 0;
+                        for (int i = 0;i < responseTimes.size();i++){
+                            totalTime += responseTimes.get(i);
+                            System.out.println("time " + i + " is " + responseTimes.get(i));
+                        }
+                        averageTime = totalTime/numOfResponses;
+                        System.out.println("average time is " + averageTime);
+                    }
                     txtTimer.setVisibility(View.INVISIBLE);
                     speechInfo.setTextColor(Color.BLUE);
-                    speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
+                    speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries" + "\nAverage Time: " + averageTime);
                     mic.setOnClickListener(null);
                     //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
                 }
