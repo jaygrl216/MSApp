@@ -184,12 +184,14 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             mic = (ImageButton) findViewById(R.id.speak);
             normal = (Button) findViewById(R.id.normal);
             speech = (Button) findViewById(R.id.speech);
+            speechInfo = (TextView) findViewById(R.id.speakInfo);
 
 
             key.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
             symbol.setVisibility(View.INVISIBLE);
             mic.setVisibility(View.INVISIBLE);
+            speechInfo.setVisibility(View.INVISIBLE);
 
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
@@ -209,6 +211,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         numbers.setVisibility(View.VISIBLE);
         mic.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
+        speechInfo.setVisibility(View.VISIBLE);
 
     }
 
