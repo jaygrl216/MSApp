@@ -102,7 +102,8 @@
         android:text="SpeakInfo Here"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_alignTop="@+id/speak"
-        android:layout_alignStart="@+id/speech" />
+        android:layout_alignTop="@+id/symbol"
+        android:layout_alignStart="@+id/timer"
+        android:layout_marginStart="13dp" />
 
 </RelativeLayout>

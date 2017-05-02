@@ -34,6 +34,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button normal;
     private Intent intent;
     private int timeRemaining = 90;
+    private int curAns = -1;
+    private int curResult = -1;
+    private int numCorrect = 0;
+    private int numTotal = 0;
     private boolean startTest = false;
     int chosenSymbol = -1;
     private static final String TAG = "test";
@@ -78,6 +82,73 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 speechInfo.setTextColor(Color.GREEN);
                 System.out.println(data.get(0));
                 speechInfo.setText("We heard " + data.get(0)+". \nPlease say the next one!");
+
+                switch (data.get(0).toString()){
+                    case "one":
+                        curResult = 1;
+                        break;
+                    case "two":
+                        curResult = 2;
+                        break;
+                    case "tell":
+                        curResult = 2;
+                        break;
+                    case "three":
+                        curResult = 3;
+                        break;
+                    case "four":
+                        curResult = 4;
+                        break;
+                    case "five":
+                        curResult = 5;
+                        break;
+                    case "six":
+                        curResult = 6;
+                        break;
+                    case "sex":
+                        curResult = 6;
+                        break;
+                    case "seven":
+                        curResult = 7;
+                        break;
+                    case "eight":
+                        curResult = 8;
+                        break;
+                    case "1":
+                        curResult = 1;
+                        break;
+                    case "2":
+                        curResult = 2;
+                        break;
+                    case "3":
+                        curResult = 3;
+                        break;
+                    case "4":
+                        curResult = 4;
+                        break;
+                    case "5":
+                        curResult = 5;
+                        break;
+                    case "6":
+                        curResult = 6;
+                        break;
+                    case "7":
+                        curResult = 7;
+                        break;
+                    case "8":
+                        curResult = 8;
+                        break;
+                    default:
+                        curResult = -1;
+                        break;
+                }
+
+                if(curAns == curResult) {
+                    numCorrect++;
+                }
+                numTotal++;
+
+
                 randomizeSymbol();
             }
             else{
@@ -103,27 +174,35 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         switch (chosenSymbol){
             case 1:
                 symbol.setImageResource(R.drawable.shape_circle);
+                curAns = 1;
                 break;
             case 2:
                 symbol.setImageResource(R.drawable.shape_dollar);
+                curAns = 2;
                 break;
             case 3:
                 symbol.setImageResource(R.drawable.shape_plus);
+                curAns = 3;
                 break;
             case 4:
                 symbol.setImageResource(R.drawable.shape_pound);
+                curAns = 4;
                 break;
             case 5:
                 symbol.setImageResource(R.drawable.shape_square);
+                curAns = 5;
                 break;
             case 6:
                 symbol.setImageResource(R.drawable.shape_star);
+                curAns = 6;
                 break;
             case 7:
                 symbol.setImageResource(R.drawable.shape_triangle);
+                curAns = 7;
                 break;
             case 8:
                 symbol.setImageResource(R.drawable.shape_x);
+                curAns = 8;
                 break;
             default:
                 System.out.println("not working");
@@ -171,6 +250,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         speechInfo.setText("Speak now!");
         speech.setVisibility(View.INVISIBLE);
         normal.setVisibility(View.INVISIBLE);
+        instructions.setVisibility(View.INVISIBLE);
 
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
@@ -209,7 +289,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     txtTimer.setTextColor(Color.BLUE);
                     txtTimer.setText("Test is over!");
                     mic.setOnClickListener(null);
-                    //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
+                    int score = ((numCorrect/numTotal) * 100)/90;
+                    System.out.println(numCorrect);
+                    System.out.println(numTotal);
+                    speechInfo.setText("Score: " + score);
+
                 }
             }.start();
             startTest = true;
