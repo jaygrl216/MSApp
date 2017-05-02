@@ -67,8 +67,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/shape_star"
+        android:layout_marginTop="21dp"
         android:layout_alignTop="@+id/speech"
-        android:layout_toStartOf="@+id/imageView"
-        android:layout_marginTop="35dp" />
+        android:layout_toStartOf="@+id/imageView" />
+
+    <ImageButton
+        android:id="@+id/speak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_btn_speak_now"
+        android:layout_marginStart="12dp"
+        android:layout_alignBottom="@+id/normal"
+        android:layout_toEndOf="@+id/numbers" />
 
 </RelativeLayout>
