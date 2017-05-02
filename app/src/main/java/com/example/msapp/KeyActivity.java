@@ -52,7 +52,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int numCorrect = 0;
     private int numWrong = 0;
     private int numTotal = 0;
-    private int timeRemaining = 15;
+    private int timeRemaining = 90;
     private boolean startTest = false;
     private HashMap<Integer, List<String>> validPairings = new HashMap<>();
     int chosenSymbol = -1;
