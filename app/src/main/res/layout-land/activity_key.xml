@@ -95,4 +95,14 @@
         android:layout_alignStart="@+id/imageView"
         android:layout_marginStart="21dp" />
 
+    <TextView
+        android:id="@+id/speakInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SpeakInfo Here"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_alignTop="@+id/speak"
+        android:layout_alignStart="@+id/speech" />
+
 </RelativeLayout>

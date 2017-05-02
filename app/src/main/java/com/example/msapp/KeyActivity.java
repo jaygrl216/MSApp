@@ -25,6 +25,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
+    private TextView speechInfo;
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -67,21 +68,21 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
         public void onError(int error)
         {
-            instructions.setTextColor(Color.RED);
-            instructions.setText("We didn't quite get that!\n Please say your number again!");
+            speechInfo.setTextColor(Color.RED);
+            speechInfo.setText("We didn't quite get that!\n Please say your number again!");
         }
         public void onResults(Bundle results)
         {
             ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if(possibleAnswers.contains(data.get(0))){
-                instructions.setTextColor(Color.GREEN);
+                speechInfo.setTextColor(Color.GREEN);
                 System.out.println(data.get(0));
-                instructions.setText("We heard " + data.get(0)+". \nPlease say the next one!");
+                speechInfo.setText("We heard " + data.get(0)+". \nPlease say the next one!");
                 randomizeSymbol();
             }
             else{
-                instructions.setTextColor(Color.RED);
-                instructions.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
+                speechInfo.setTextColor(Color.RED);
+                speechInfo.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
                 //sr.startListening(intent);
             }
         }
@@ -148,12 +149,14 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             mic = (ImageButton) findViewById(R.id.speak);
             normal = (Button) findViewById(R.id.normal);
             speech = (Button) findViewById(R.id.speech);
+            speechInfo = (TextView) findViewById(R.id.speakInfo);
 
 
             key.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
             symbol.setVisibility(View.INVISIBLE);
             mic.setVisibility(View.INVISIBLE);
+            speechInfo.setVisibility(View.INVISIBLE);
 
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
@@ -165,7 +168,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void startSpeechTest(View v) {
-        instructions.setText("Speak now!");
+        speechInfo.setText("Speak now!");
         speech.setVisibility(View.INVISIBLE);
         normal.setVisibility(View.INVISIBLE);
 
@@ -173,6 +176,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         numbers.setVisibility(View.VISIBLE);
         mic.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
+        speechInfo.setVisibility(View.VISIBLE);
 
     }
 
