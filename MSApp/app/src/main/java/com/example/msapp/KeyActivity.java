@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class KeyActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView instructions;
@@ -28,6 +29,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button speech;
     private Button normal;
     private Intent intent;
+    int chosenSymbol = -1;
     private static final String TAG = "test";
     ArrayList<String> possibleAnswers = new ArrayList<String>(Arrays.asList("one", "two", "tell",
             "three","four","five",
@@ -68,6 +70,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             if(possibleAnswers.contains(data.get(0))){
                 System.out.println(data.get(0));
                 instructions.setText("We heard " + data.get(0)+". \nPlease say the next one!");
+                randomizeSymbol();
+                System.out.println("dumb shit");
             }
             else{
                 instructions.setText("We didn't quite get that! \nWe heard " + data.get(0) + " \nPlease say your number again!");
@@ -82,6 +86,42 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         {
 
         }
+    }
+
+    public void randomizeSymbol(){
+        Random r = new Random();
+        chosenSymbol = r.nextInt(8 - 1 + 1) + 1;
+        System.out.println(chosenSymbol);
+        switch (chosenSymbol){
+            case 1:
+                symbol.setImageResource(R.drawable.shape_circle);
+                break;
+            case 2:
+                symbol.setImageResource(R.drawable.shape_dollar);
+                break;
+            case 3:
+                symbol.setImageResource(R.drawable.shape_plus);
+                break;
+            case 4:
+                symbol.setImageResource(R.drawable.shape_pound);
+                break;
+            case 5:
+                symbol.setImageResource(R.drawable.shape_square);
+                break;
+            case 6:
+                symbol.setImageResource(R.drawable.shape_star);
+                break;
+            case 7:
+                symbol.setImageResource(R.drawable.shape_triangle);
+                break;
+            case 8:
+                symbol.setImageResource(R.drawable.shape_x);
+                break;
+            default:
+                System.out.println("not wroking");
+                break;
+        }
+
     }
 
     @Override
@@ -109,9 +149,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
             sr.setRecognitionListener(new Listener());
-
-
         }
+        randomizeSymbol();
 
     }
 
