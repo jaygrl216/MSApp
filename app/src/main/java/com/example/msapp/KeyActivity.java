@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,6 +29,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
+    private TextView normalTimer;
     private TextView speechInfo;
     private ImageView key;
     private ImageView symbol;
@@ -178,6 +181,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             instructions = (TextView) findViewById(R.id.instructions2);
             numbers = (TextView) findViewById(R.id.numbers);
             txtTimer = (TextView) findViewById(R.id.timer);
+            normalTimer = (TextView) findViewById(R.id.normalTimer);
             key = (ImageView) findViewById(R.id.imageView);
             symbol = (ImageView) findViewById(R.id.symbol);
             mic = (ImageButton) findViewById(R.id.speak);
@@ -227,7 +231,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
 
     public void startNormalTest(View v) {
+        speech.setVisibility(View.INVISIBLE);
+        normal.setVisibility(View.INVISIBLE);
         instructions.setVisibility(View.INVISIBLE);
+        txtTimer.setVisibility(View.INVISIBLE);
+        normalTimer.setVisibility(View.VISIBLE);
         key.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
 
