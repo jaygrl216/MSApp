@@ -9,10 +9,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="got the numeric keypad working with all the right onclicklisteners. checkresults called as well">
+    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" />
     </list>
     <ignored path="MSApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,28 +84,28 @@
           <file leaf-file-name="KeyActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="226">
-                  <caret line="213" column="22" selection-start-line="213" selection-start-column="12" selection-end-line="213" selection-end-column="22" />
+                <state relative-caret-position="-3059">
+                  <caret line="143" column="9" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
                   <folding>
-                    <element signature="e#6625#6646#0" expanded="true" />
-                    <element signature="e#7488#8432#0" expanded="true" />
-                    <element signature="e#8431#8432#0" expanded="true" />
-                    <element signature="e#8535#8681#0" expanded="true" />
-                    <element signature="e#8680#8681#0" expanded="true" />
-                    <element signature="e#8784#8930#0" expanded="true" />
-                    <element signature="e#8929#8930#0" expanded="true" />
-                    <element signature="e#9033#9179#0" expanded="true" />
-                    <element signature="e#9178#9179#0" expanded="true" />
-                    <element signature="e#9282#9428#0" expanded="true" />
-                    <element signature="e#9427#9428#0" expanded="true" />
-                    <element signature="e#9531#9677#0" expanded="true" />
-                    <element signature="e#9676#9677#0" expanded="true" />
-                    <element signature="e#9780#9926#0" expanded="true" />
-                    <element signature="e#9925#9926#0" expanded="true" />
-                    <element signature="e#10029#10175#0" expanded="true" />
-                    <element signature="e#10174#10175#0" expanded="true" />
-                    <element signature="e#10278#10424#0" expanded="true" />
-                    <element signature="e#10423#10424#0" expanded="true" />
+                    <element signature="e#6624#6645#0" expanded="true" />
+                    <element signature="e#7487#8502#0" expanded="true" />
+                    <element signature="e#8501#8502#0" expanded="true" />
+                    <element signature="e#8605#8751#0" expanded="true" />
+                    <element signature="e#8750#8751#0" expanded="true" />
+                    <element signature="e#8854#9000#0" expanded="true" />
+                    <element signature="e#8999#9000#0" expanded="true" />
+                    <element signature="e#9103#9249#0" expanded="true" />
+                    <element signature="e#9248#9249#0" expanded="true" />
+                    <element signature="e#9352#9498#0" expanded="true" />
+                    <element signature="e#9497#9498#0" expanded="true" />
+                    <element signature="e#9601#9747#0" expanded="true" />
+                    <element signature="e#9746#9747#0" expanded="true" />
+                    <element signature="e#9850#9996#0" expanded="true" />
+                    <element signature="e#9995#9996#0" expanded="true" />
+                    <element signature="e#10099#10245#0" expanded="true" />
+                    <element signature="e#10244#10245#0" expanded="true" />
+                    <element signature="e#10348#10494#0" expanded="true" />
+                    <element signature="e#10493#10494#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -2702,15 +2701,22 @@
       <option name="project" value="LOCAL" />
       <updated>1493703363047</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="got the numeric keypad working with all the right onclicklisteners. checkresults called as well">
+      <created>1493704849428</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1493704849428</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.58498585" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09773371" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3146,28 +3152,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="213" column="22" selection-start-line="213" selection-start-column="12" selection-end-line="213" selection-end-column="22" />
+        <state relative-caret-position="-3059">
+          <caret line="143" column="9" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
           <folding>
-            <element signature="e#6625#6646#0" expanded="true" />
-            <element signature="e#7488#8432#0" expanded="true" />
-            <element signature="e#8431#8432#0" expanded="true" />
-            <element signature="e#8535#8681#0" expanded="true" />
-            <element signature="e#8680#8681#0" expanded="true" />
-            <element signature="e#8784#8930#0" expanded="true" />
-            <element signature="e#8929#8930#0" expanded="true" />
-            <element signature="e#9033#9179#0" expanded="true" />
-            <element signature="e#9178#9179#0" expanded="true" />
-            <element signature="e#9282#9428#0" expanded="true" />
-            <element signature="e#9427#9428#0" expanded="true" />
-            <element signature="e#9531#9677#0" expanded="true" />
-            <element signature="e#9676#9677#0" expanded="true" />
-            <element signature="e#9780#9926#0" expanded="true" />
-            <element signature="e#9925#9926#0" expanded="true" />
-            <element signature="e#10029#10175#0" expanded="true" />
-            <element signature="e#10174#10175#0" expanded="true" />
-            <element signature="e#10278#10424#0" expanded="true" />
-            <element signature="e#10423#10424#0" expanded="true" />
+            <element signature="e#6624#6645#0" expanded="true" />
+            <element signature="e#7487#8502#0" expanded="true" />
+            <element signature="e#8501#8502#0" expanded="true" />
+            <element signature="e#8605#8751#0" expanded="true" />
+            <element signature="e#8750#8751#0" expanded="true" />
+            <element signature="e#8854#9000#0" expanded="true" />
+            <element signature="e#8999#9000#0" expanded="true" />
+            <element signature="e#9103#9249#0" expanded="true" />
+            <element signature="e#9248#9249#0" expanded="true" />
+            <element signature="e#9352#9498#0" expanded="true" />
+            <element signature="e#9497#9498#0" expanded="true" />
+            <element signature="e#9601#9747#0" expanded="true" />
+            <element signature="e#9746#9747#0" expanded="true" />
+            <element signature="e#9850#9996#0" expanded="true" />
+            <element signature="e#9995#9996#0" expanded="true" />
+            <element signature="e#10099#10245#0" expanded="true" />
+            <element signature="e#10244#10245#0" expanded="true" />
+            <element signature="e#10348#10494#0" expanded="true" />
+            <element signature="e#10493#10494#0" expanded="true" />
           </folding>
         </state>
       </provider>

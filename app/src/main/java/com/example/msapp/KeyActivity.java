@@ -142,7 +142,6 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         else{
             numWrong += 1;
         }
-
         numTotal += 1;
         randomizeSymbol();
 
@@ -224,7 +223,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                 normalTimer.setText("" +--timeRemaining);
                             }
                             public void onFinish() {
-                                normalStartButton.setVisibility(View.INVISIBLE);
+                                numericKeypad.setVisibility(View.INVISIBLE);
+                                normalTimer.setVisibility(View.INVISIBLE);
                                 speechInfo.setTextColor(Color.BLUE);
                                 speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
 
