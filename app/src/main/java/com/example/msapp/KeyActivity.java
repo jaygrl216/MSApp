@@ -289,7 +289,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     txtTimer.setTextColor(Color.BLUE);
                     txtTimer.setText("Test is over!");
                     mic.setOnClickListener(null);
-                    int score = ((numCorrect/numTotal) * 100)/90;
+                    double score = ((numCorrect/numTotal) * 100)/90;
                     System.out.println(numCorrect);
                     System.out.println(numTotal);
                     speechInfo.setText("Score: " + score);
