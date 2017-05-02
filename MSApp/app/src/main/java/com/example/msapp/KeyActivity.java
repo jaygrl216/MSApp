@@ -30,18 +30,23 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     {
         public void onReadyForSpeech(Bundle params)
         {
+            System.out.println("Ready");
         }
         public void onBeginningOfSpeech()
         {
+            System.out.println("Beginning");
         }
         public void onRmsChanged(float rmsdB)
         {
+            System.out.println("Changed");
         }
         public void onBufferReceived(byte[] buffer)
         {
+            System.out.println("Buffer Received");
         }
         public void onEndOfSpeech()
         {
+            System.out.println("Done");
         }
         public void onError(int error)
         {
@@ -49,6 +54,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         public void onResults(Bundle results)
         {
             ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            System.out.println(data.get(0));
 
         }
         public void onPartialResults(Bundle partialResults)
@@ -82,6 +88,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             mic.setVisibility(View.INVISIBLE);
 
             mic.setOnClickListener(this);
+            System.out.println("listner set");
             sr = SpeechRecognizer.createSpeechRecognizer(this);
             sr.setRecognitionListener(new Listener());
 
@@ -121,7 +128,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void onClick(View v) {
-        System.out.println("here");
+
         if (v.getId() == R.id.speak)
         {
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -130,6 +137,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
             intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,5);
             sr.startListening(intent);
+            System.out.println("here");
 
         }
     }
