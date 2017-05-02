@@ -233,7 +233,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         System.out.println("here");
         if(!startTest){
-            new CountDownTimer(90000, 1000) {
+            new CountDownTimer(15000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
