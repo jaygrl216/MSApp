@@ -33,6 +33,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private TextView normalTimer;
     private TextView speechInfo;
     private GridLayout numericKeypad;
+    private Button normalStartButton;
     private Button button1;
     private Button button2;
     private Button button3;
@@ -135,7 +136,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void checkResultNormal(int num){
+        if(num == chosenSymbol){
+            numCorrect += 1;
+        }
+        else{
+            numWrong += 1;
+        }
 
+        numTotal += 1;
+        randomizeSymbol();
 
     }
 
@@ -205,64 +214,82 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             speechInfo = (TextView) findViewById(R.id.speakInfo);
             numericKeypad = (GridLayout) findViewById(R.id.numericKeypad);
 
+            normalStartButton = (Button) findViewById(R.id.normalTestStart);
+            normalStartButton.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    normalStartButton.setVisibility(View.INVISIBLE);
+                    if(!startTest){
+                        new CountDownTimer(15000, 1000) {
+                            public void onTick(long millisUntilFinished) {
+                                normalTimer.setText("" +--timeRemaining);
+                            }
+                            public void onFinish() {
+                                normalStartButton.setVisibility(View.INVISIBLE);
+                                speechInfo.setTextColor(Color.BLUE);
+                                speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries");
+
+                            }
+                        }.start();
+                        startTest = true;
+                    }
+                }
+            });
+
             button1 = (Button) findViewById(R.id.button_1);
             button1.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(1);
                 }
             });
 
             button2 = (Button) findViewById(R.id.button_2);
             button2.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(2);
                 }
             });
 
             button3 = (Button) findViewById(R.id.button_3);
             button3.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(3);
                 }
             });
 
             button4 = (Button) findViewById(R.id.button_4);
             button4.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(4);
                 }
             });
 
             button5 = (Button) findViewById(R.id.button_5);
             button5.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(5);
                 }
             });
 
             button6 = (Button) findViewById(R.id.button_6);
             button6.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(6);
                 }
             });
 
             button7 = (Button) findViewById(R.id.button_7);
             button7.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(7);
                 }
             });
 
             button8 = (Button) findViewById(R.id.button_8);
             button8.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    checkResultNormal(8);
                 }
             });
-
-
-
 
 
             key.setVisibility(View.INVISIBLE);
@@ -272,6 +299,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             speechInfo.setVisibility(View.INVISIBLE);
             normalTimer.setVisibility(View.INVISIBLE);
             numericKeypad.setVisibility(View.INVISIBLE);
+            normalStartButton.setVisibility(View.INVISIBLE);
 
             mic.setOnClickListener(this);
             sr = SpeechRecognizer.createSpeechRecognizer(this);
@@ -312,6 +340,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         normal.setVisibility(View.INVISIBLE);
         instructions.setVisibility(View.INVISIBLE);
         txtTimer.setVisibility(View.INVISIBLE);
+
+        normalStartButton.setVisibility(View.VISIBLE);
 
         numericKeypad.setVisibility(View.VISIBLE);
         normalTimer.setVisibility(View.VISIBLE);

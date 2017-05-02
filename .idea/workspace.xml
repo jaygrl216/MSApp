@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="">
+    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="got the numeric keypad working with all the right onclicklisteners. checkresults called as well">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml" />
@@ -43,7 +43,7 @@
     <favorites_list name="MSApp" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55781114">
+    <splitter split-orientation="horizontal" split-proportion="0.76345986">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
           <file leaf-file-name="activity_welcome.xml" pinned="false" current-in-tab="false">
@@ -85,10 +85,28 @@
           <file leaf-file-name="KeyActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
+                <state relative-caret-position="226">
+                  <caret line="213" column="22" selection-start-line="213" selection-start-column="12" selection-end-line="213" selection-end-column="22" />
                   <folding>
-                    <element signature="e#6422#6443#0" expanded="true" />
+                    <element signature="e#6625#6646#0" expanded="true" />
+                    <element signature="e#7488#8432#0" expanded="true" />
+                    <element signature="e#8431#8432#0" expanded="true" />
+                    <element signature="e#8535#8681#0" expanded="true" />
+                    <element signature="e#8680#8681#0" expanded="true" />
+                    <element signature="e#8784#8930#0" expanded="true" />
+                    <element signature="e#8929#8930#0" expanded="true" />
+                    <element signature="e#9033#9179#0" expanded="true" />
+                    <element signature="e#9178#9179#0" expanded="true" />
+                    <element signature="e#9282#9428#0" expanded="true" />
+                    <element signature="e#9427#9428#0" expanded="true" />
+                    <element signature="e#9531#9677#0" expanded="true" />
+                    <element signature="e#9676#9677#0" expanded="true" />
+                    <element signature="e#9780#9926#0" expanded="true" />
+                    <element signature="e#9925#9926#0" expanded="true" />
+                    <element signature="e#10029#10175#0" expanded="true" />
+                    <element signature="e#10174#10175#0" expanded="true" />
+                    <element signature="e#10278#10424#0" expanded="true" />
+                    <element signature="e#10423#10424#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -101,8 +119,8 @@
           <file leaf-file-name="activity_key.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="477">
-                  <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
+                <state relative-caret-position="475">
+                  <caret line="160" column="36" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -2083,8 +2101,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout-land/activity_key.xml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -2678,22 +2695,29 @@
       <option name="project" value="LOCAL" />
       <updated>1493702592581</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="set up empty methods for implementation">
+      <created>1493703363047</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1493703363047</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16713881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.58498585" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.50216216" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.00124533" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.04107649" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.019830028" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3569405" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.49783784" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2775,7 +2799,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="test2" />
     <MESSAGE value="added in ben's work and merged everything" />
     <MESSAGE value="testing github" />
@@ -2799,7 +2822,9 @@
     <MESSAGE value="timer 15 seconds" />
     <MESSAGE value="normal test UI dev" />
     <MESSAGE value="inserted the numeric keypad" />
-    <option name="LAST_COMMIT_MESSAGE" value="inserted the numeric keypad" />
+    <MESSAGE value="set up empty methods for implementation" />
+    <MESSAGE value="got the numeric keypad working with all the right onclicklisteners. checkresults called as well" />
+    <option name="LAST_COMMIT_MESSAGE" value="got the numeric keypad working with all the right onclicklisteners. checkresults called as well" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3121,10 +3146,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
+        <state relative-caret-position="226">
+          <caret line="213" column="22" selection-start-line="213" selection-start-column="12" selection-end-line="213" selection-end-column="22" />
           <folding>
-            <element signature="e#6422#6443#0" expanded="true" />
+            <element signature="e#6625#6646#0" expanded="true" />
+            <element signature="e#7488#8432#0" expanded="true" />
+            <element signature="e#8431#8432#0" expanded="true" />
+            <element signature="e#8535#8681#0" expanded="true" />
+            <element signature="e#8680#8681#0" expanded="true" />
+            <element signature="e#8784#8930#0" expanded="true" />
+            <element signature="e#8929#8930#0" expanded="true" />
+            <element signature="e#9033#9179#0" expanded="true" />
+            <element signature="e#9178#9179#0" expanded="true" />
+            <element signature="e#9282#9428#0" expanded="true" />
+            <element signature="e#9427#9428#0" expanded="true" />
+            <element signature="e#9531#9677#0" expanded="true" />
+            <element signature="e#9676#9677#0" expanded="true" />
+            <element signature="e#9780#9926#0" expanded="true" />
+            <element signature="e#9925#9926#0" expanded="true" />
+            <element signature="e#10029#10175#0" expanded="true" />
+            <element signature="e#10174#10175#0" expanded="true" />
+            <element signature="e#10278#10424#0" expanded="true" />
+            <element signature="e#10423#10424#0" expanded="true" />
           </folding>
         </state>
       </provider>

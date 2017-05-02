@@ -152,5 +152,13 @@
 
     </GridLayout>
 
+    <Button
+        android:id="@+id/normalTestStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/normal"
+        android:layout_centerHorizontal="true"
+        android:text="Click To Begin" />
+
 
 </RelativeLayout>
