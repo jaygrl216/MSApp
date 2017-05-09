@@ -47,7 +47,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button button8;
     private Button button9;
 
-    private ImageView key;
+    private ImageView key1;
+    private ImageView key2;
+    private ImageView key3;
+    private ImageView key4;
+    private ImageView key5;
+    private ImageView key6;
+    private ImageView key7;
+    private ImageView key8;
+    private ImageView key9;
     private ImageView symbol;
     private ImageButton mic;
     private SpeechRecognizer sr;
@@ -284,7 +292,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             numbers = (TextView) findViewById(R.id.numbers);
             txtTimer = (TextView) findViewById(R.id.timer);
             normalTimer = (TextView) findViewById(R.id.normalTimer);
-            key = (ImageView) findViewById(R.id.imageView);
+            key1 = (ImageView) findViewById(R.id.imageView1);
+            key2 = (ImageView) findViewById(R.id.imageView2);
+            key3 = (ImageView) findViewById(R.id.imageView3);
+            key4 = (ImageView) findViewById(R.id.imageView4);
+            key5 = (ImageView) findViewById(R.id.imageView5);
+            key6 = (ImageView) findViewById(R.id.imageView6);
+            key7 = (ImageView) findViewById(R.id.imageView7);
+            key8 = (ImageView) findViewById(R.id.imageView8);
+            key9 = (ImageView) findViewById(R.id.imageView9);
             symbol = (ImageView) findViewById(R.id.symbol);
             mic = (ImageButton) findViewById(R.id.speak);
             normal = (Button) findViewById(R.id.normal);
@@ -438,7 +454,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
 
 
-            key.setVisibility(View.INVISIBLE);
+            key1.setVisibility(View.INVISIBLE);
+            key2.setVisibility(View.INVISIBLE);
+            key3.setVisibility(View.INVISIBLE);
+            key4.setVisibility(View.INVISIBLE);
+            key5.setVisibility(View.INVISIBLE);
+            key6.setVisibility(View.INVISIBLE);
+            key7.setVisibility(View.INVISIBLE);
+            key8.setVisibility(View.INVISIBLE);
+            key9.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
             symbol.setVisibility(View.INVISIBLE);
             mic.setVisibility(View.INVISIBLE);
@@ -462,7 +486,16 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         normal.setVisibility(View.INVISIBLE);
         instructions.setVisibility(View.INVISIBLE);
 
-        key.setVisibility(View.VISIBLE);
+        key1.setVisibility(View.VISIBLE);
+        key2.setVisibility(View.VISIBLE);
+        key3.setVisibility(View.VISIBLE);
+        key4.setVisibility(View.VISIBLE);
+        key5.setVisibility(View.VISIBLE);
+        key6.setVisibility(View.VISIBLE);
+        key7.setVisibility(View.VISIBLE);
+        key8.setVisibility(View.VISIBLE);
+        key9.setVisibility(View.VISIBLE);
+
         numbers.setVisibility(View.VISIBLE);
         mic.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
@@ -491,7 +524,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
         numericKeypad.setVisibility(View.VISIBLE);
         normalTimer.setVisibility(View.VISIBLE);
-        key.setVisibility(View.VISIBLE);
+        key1.setVisibility(View.VISIBLE);
+        key2.setVisibility(View.VISIBLE);
+        key3.setVisibility(View.VISIBLE);
+        key4.setVisibility(View.VISIBLE);
+        key5.setVisibility(View.VISIBLE);
+        key6.setVisibility(View.VISIBLE);
+        key7.setVisibility(View.VISIBLE);
+        key8.setVisibility(View.VISIBLE);
+        key9.setVisibility(View.VISIBLE);
         numbers.setVisibility(View.VISIBLE);
         symbol.setVisibility(View.VISIBLE);
     }
@@ -552,7 +593,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
         numericKeypad.setVisibility(View.INVISIBLE);
         normalTimer.setVisibility(View.INVISIBLE);
-        key.setVisibility(View.INVISIBLE);
+        key1.setVisibility(View.INVISIBLE);
+        key2.setVisibility(View.INVISIBLE);
+        key3.setVisibility(View.INVISIBLE);
+        key4.setVisibility(View.INVISIBLE);
+        key5.setVisibility(View.INVISIBLE);
+        key6.setVisibility(View.INVISIBLE);
+        key7.setVisibility(View.INVISIBLE);
+        key8.setVisibility(View.INVISIBLE);
+        key9.setVisibility(View.INVISIBLE);
         numbers.setVisibility(View.INVISIBLE);
         symbol.setVisibility(View.INVISIBLE);
         speechInfo.setVisibility(View.INVISIBLE);

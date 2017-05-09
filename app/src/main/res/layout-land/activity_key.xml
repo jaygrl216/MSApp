@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView1"
         android:layout_width="36dp"
         android:layout_height="37dp"
         android:layout_x="123dp"
@@ -24,8 +24,8 @@
         android:layout_x="123dp"
         android:layout_y="18dp"
         app:srcCompat="@drawable/shape_circle"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_toEndOf="@+id/imageView1" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -106,8 +106,8 @@
         android:text=" 1  2  3  4  5  6  7  8  9"
         android:textColor="#000"
         android:textSize="34sp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_below="@+id/imageView1"
+        android:layout_alignStart="@+id/imageView1" />
 
     <Button
         android:id="@+id/speech"
@@ -137,7 +137,7 @@
         android:text="Match the symbol with the corresponding number. Please select either the normalized test or the speech test."
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_alignTop="@+id/imageView"
+        android:layout_alignTop="@+id/imageView1"
         android:layout_alignParentStart="true" />
 
     <ImageView
@@ -147,7 +147,7 @@
         app:srcCompat="@drawable/shape_star"
         android:layout_marginTop="21dp"
         android:layout_alignTop="@+id/speech"
-        android:layout_toStartOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView1"
         android:layout_alignBottom="@+id/normal" />
 
     <ImageButton
@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/normal"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView1"
         android:adjustViewBounds="false"
         app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
@@ -170,7 +170,7 @@
         android:textColor="#000"
         android:textSize="34sp"
         android:layout_below="@+id/normal"
-        android:layout_alignStart="@+id/imageView"
+        android:layout_alignStart="@+id/imageView1"
         android:layout_marginStart="21dp" />
 
     <TextView
