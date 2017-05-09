@@ -13,20 +13,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class VibrateActivity extends AppCompatActivity {
     private static final int VIBRATION_START = 0;
     private static final int VIBRATION_DURATION = 2000;
 
-    private int silentSpots = 1;
+    private int silentSpots = 0;
     private int dot = 1;
     long[] pattern = {0,1,0,1};
 
-
+    private boolean testComplete = false;
     private Vibrator vibrator;
     private Button touch;
-
+    private TextView scoreText;
+    private int timesPressed = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,8 @@ public class VibrateActivity extends AppCompatActivity {
 
         vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         touch = (Button) findViewById(R.id.start);
-
+        scoreText = (TextView) findViewById(R.id.score_text_view);
+        scoreText.setVisibility(View.INVISIBLE);
     }
 
     public void startVibrate(View v) {
@@ -44,24 +47,53 @@ public class VibrateActivity extends AppCompatActivity {
         } else {
             System.out.println("Permission Granted");
         }
+        if(timesPressed == 0){
+            timesPressed++;
+        }else{
+            testComplete = true;
+        }
         touch.setText("Stop");
 
         runTest();
+        while(testComplete == false){
+            //Wait for vibration test to finish
+        }
+        int timeToComplete = silentSpots/10;
+        String letterGrade = "";
+        if(silentSpots < 40){
+            letterGrade = "Very Poor";
+        }else if(silentSpots <80){
+            letterGrade = "Poor";
+        }else if(silentSpots < 100){
+            letterGrade = "Mediocre";
+        }else if(silentSpots < 120){
+            letterGrade = "Good";
+        }else{
+            letterGrade = "Great";
+        }
+
+        touch.setVisibility(View.INVISIBLE);
+        scoreText.setText(scoreText.getText() + "\nTime until no vibration felt: " +timeToComplete +" seconds\n"+letterGrade);
+        scoreText.setVisibility(View.VISIBLE);
     }
 
     private void runTest() {
-        long[] pattern = {silentSpots, dot, silentSpots, dot};
-        vibrator.vibrate(pattern, 0);
-        new CountDownTimer(2000, 1000) {
-            public void onTick(long millisUntilFinished) {
-            }
+        if(testComplete == false) {
+            long[] pattern = {silentSpots, dot, silentSpots, dot};
+            vibrator.vibrate(pattern, 0);
+            new CountDownTimer(2000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                }
 
-            public void onFinish() {
-                silentSpots += 10;
-                vibrator.cancel();
-                runTest();
-            }
-        }.start();
+                public void onFinish() {
+                    if (testComplete == false) {
+                        silentSpots += 10;
+                        vibrator.cancel();
+                        runTest();
+                    }
+                }
+            }.start();
+        }
     }
 
     @Override
