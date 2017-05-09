@@ -11,14 +11,25 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class VibrateActivity extends AppCompatActivity {
+import edu.umd.cmsc436.sheets.Sheets;
+
+public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
     private static final int VIBRATION_START = 0;
     private static final int VIBRATION_DURATION = 2000;
+
+    public static final int LIB_ACCOUNT_NAME_REQUEST_CODE = 1001;
+    public static final int LIB_AUTHORIZATION_REQUEST_CODE = 1002;
+    public static final int LIB_PERMISSION_REQUEST_CODE = 1003;
+    public static final int LIB_PLAY_SERVICES_REQUEST_CODE = 1004;
+    public static final int LIB_CONNECTION_REQUEST_CODE = 1005;
+
+    private Sheets sheet;
 
     private int silentSpots = 0;
     private int dot = 1;
@@ -29,6 +40,8 @@ public class VibrateActivity extends AppCompatActivity {
     private Button touch;
     private TextView scoreText;
     private int timesPressed = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +51,8 @@ public class VibrateActivity extends AppCompatActivity {
         touch = (Button) findViewById(R.id.start);
         scoreText = (TextView) findViewById(R.id.score_text_view);
         scoreText.setVisibility(View.INVISIBLE);
+
+        sheet = new Sheets(this, this, getString(R.string.app_name), getString(R.string.CMSC436_testing_spreadsheet), getString(R.string.CMSC436_private_test_spreadsheet));
     }
 
     public void startVibrate(View v) {
@@ -71,6 +86,7 @@ public class VibrateActivity extends AppCompatActivity {
 
             touch.setVisibility(View.INVISIBLE);
             scoreText.setText(scoreText.getText() + "\nTime until no vibration felt: " +timeToComplete +" seconds\n"+letterGrade);
+            sendToSheets();
             scoreText.setVisibility(View.VISIBLE);
         }
 
@@ -97,9 +113,53 @@ public class VibrateActivity extends AppCompatActivity {
                         vibrator.cancel();
                         runTest();
                     }
+                    else{
+                        sendToSheets();
+                    }
                 }
             }.start();
         }
+    }
+
+    //i dont know the metrics for this method
+    private void sendToSheets(){
+        //the last field should be an answer of sorts
+        //Sheets.TestType.OUTDOOR_WALKING is there because this test hasn't been
+        //added to the source code
+        sheet.writeData(Sheets.TestType.OUTDOOR_WALKING, getString(R.string.username), 420);
+    }
+
+
+    public int getRequestCode(Sheets.Action action){
+        //this is space holding code, should be looked at more in depth in the future
+        switch (action){
+            case REQUEST_PERMISSIONS:
+                return LIB_PERMISSION_REQUEST_CODE;
+
+            case REQUEST_ACCOUNT_NAME:
+                return LIB_ACCOUNT_NAME_REQUEST_CODE;
+
+            case REQUEST_PLAY_SERVICES:
+                return LIB_PLAY_SERVICES_REQUEST_CODE;
+
+            case REQUEST_AUTHORIZATION:
+                return LIB_AUTHORIZATION_REQUEST_CODE;
+
+            case REQUEST_CONNECTION_RESOLUTION:
+                return LIB_CONNECTION_REQUEST_CODE;
+
+            default:
+                return -1;
+        }
+
+    }
+
+    @Override
+    public void notifyFinished(Exception e) {
+        if (e != null) {
+            throw new RuntimeException(e);
+        }
+        Log.i(getClass().getSimpleName(), "Done");
     }
 
     @Override
@@ -117,7 +177,11 @@ public class VibrateActivity extends AppCompatActivity {
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        this.sheet.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+
 
 
 }

@@ -5,4 +5,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="instructions">Please rotate your phone to start the test.</string>
+    <string name="CMSC436_testing_spreadsheet">1M31NKVYGpuovQPpGdUhLC0875ceKPfSfgZ1IRO3Y4IE</string>
+    <string name="CMSC436_private_test_spreadsheet">1qRWOH71mQqaYbCCU27zYYncaKEfUsup9bt2oreX6L7o</string>
+    <string name="username">HH1</string>
 </resources>

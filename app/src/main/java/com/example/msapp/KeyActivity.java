@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -35,6 +36,15 @@ import edu.umd.cmsc436.sheets.Sheets;
 
 
 public class KeyActivity extends AppCompatActivity implements View.OnClickListener, Sheets.Host {
+
+    public static final int LIB_ACCOUNT_NAME_REQUEST_CODE = 1001;
+    public static final int LIB_AUTHORIZATION_REQUEST_CODE = 1002;
+    public static final int LIB_PERMISSION_REQUEST_CODE = 1003;
+    public static final int LIB_PLAY_SERVICES_REQUEST_CODE = 1004;
+    public static final int LIB_CONNECTION_REQUEST_CODE = 1005;
+
+    private Sheets sheet;
+
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
@@ -300,6 +310,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         hash1.put(9, 0.0);
 
 
+        sheet = new Sheets(this, this, getString(R.string.app_name), getString(R.string.CMSC436_testing_spreadsheet), getString(R.string.CMSC436_private_test_spreadsheet));
+
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             instructions = (TextView) findViewById(R.id.instructions);
             instructions.setText(R.string.instructions);
@@ -526,6 +538,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        this.sheet.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_OK  && resultCode == RESULT_OK) {
             ArrayList<String> thingsYouSaid = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             System.out.println(thingsYouSaid.get(0));
@@ -632,8 +645,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
 
     private void sendToSheets(){
-        String spreadsheetId = "1M31NKVYGpuovQPpGdUhLC0875ceKPfSfgZ1IRO3Y4IE";
-        String userId = "HH1";
+        //the last field should be an answer of sorts
+        //Sheets.TestType.OUTDOOR_WALKING is there because this test hasn't been
+        //added to the source code
+
+        sheet.writeData(Sheets.TestType.OUTDOOR_WALKING, getString(R.string.username).toString(), 420);
     }
 
 
@@ -641,19 +657,19 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         //this is space holding code, should be looked at more in depth in the future
         switch (action){
             case REQUEST_PERMISSIONS:
-                return 0;
+                return LIB_PERMISSION_REQUEST_CODE;
 
             case REQUEST_ACCOUNT_NAME:
-                return 1;
+                return LIB_ACCOUNT_NAME_REQUEST_CODE;
 
             case REQUEST_PLAY_SERVICES:
-                return 2;
+                return LIB_PLAY_SERVICES_REQUEST_CODE;
 
             case REQUEST_AUTHORIZATION:
-                return 3;
+                return LIB_AUTHORIZATION_REQUEST_CODE;
 
             case REQUEST_CONNECTION_RESOLUTION:
-                return 4;
+                return LIB_CONNECTION_REQUEST_CODE;
 
             default:
                 return -1;
@@ -661,9 +677,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    public void notifyFinished(Exception e){
-
+    @Override
+    public void notifyFinished(Exception e) {
+        if (e != null) {
+            throw new RuntimeException(e);
+        }
+        Log.i(getClass().getSimpleName(), "Done");
     }
 
-    //i didnt override yet
+    @Override
+    public void onRequestPermissionsResult (int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        this.sheet.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
 }
