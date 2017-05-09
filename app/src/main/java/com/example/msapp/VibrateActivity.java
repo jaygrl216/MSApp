@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -13,11 +14,16 @@ import android.view.View;
 import android.widget.Toast;
 
 public class VibrateActivity extends AppCompatActivity {
+    private static final int VIBRATION_START = 0;
+    private static final int VIBRATION_DURATION = 5000;
 
+    private Vibrator vibrator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vibrate);
+
+        vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     public void startVibrate(View v) {
@@ -26,6 +32,10 @@ public class VibrateActivity extends AppCompatActivity {
                     1);
         }
 
+        int silentSpots = 0;
+        int dot = 1;
+        long[] pattern = {VIBRATION_START, VIBRATION_DURATION, dot, silentSpots};
+        vibrator.vibrate(pattern, -1);
     }
 
     @Override
