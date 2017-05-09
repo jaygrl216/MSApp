@@ -29,7 +29,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.TreeMap;
 
-public class KeyActivity extends AppCompatActivity implements View.OnClickListener {
+import edu.umd.cmsc436.sheets.Sheets;
+
+
+
+
+public class KeyActivity extends AppCompatActivity implements View.OnClickListener, Sheets.Host {
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
@@ -623,6 +628,42 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         advancedStatsButton.setVisibility(View.INVISIBLE);
 
         statsTextview.setVisibility(View.VISIBLE);
+    }
+
+
+    private void sendToSheets(){
+        String spreadsheetId = "1M31NKVYGpuovQPpGdUhLC0875ceKPfSfgZ1IRO3Y4IE";
+        String userId = "HH1";
+    }
+
+
+    public int getRequestCode(Sheets.Action action){
+        //this is space holding code, should be looked at more in depth in the future
+        switch (action){
+            case REQUEST_PERMISSIONS:
+                return 0;
+
+            case REQUEST_ACCOUNT_NAME:
+                return 1;
+
+            case REQUEST_PLAY_SERVICES:
+                return 2;
+
+            case REQUEST_AUTHORIZATION:
+                return 3;
+
+            case REQUEST_CONNECTION_RESOLUTION:
+                return 4;
+
+            default:
+                return -1;
+        }
 
     }
+
+    public void notifyFinished(Exception e){
+
+    }
+
+    //i didnt override yet
 }
