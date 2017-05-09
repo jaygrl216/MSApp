@@ -47,38 +47,44 @@ public class VibrateActivity extends AppCompatActivity {
         } else {
             System.out.println("Permission Granted");
         }
+
+
         if(timesPressed == 0){
             timesPressed++;
+            touch.setText("Stop");
         }else{
             testComplete = true;
-        }
-        touch.setText("Stop");
+            vibrator.cancel();
+            int timeToComplete = silentSpots/10;
+            String letterGrade = "";
+            if(silentSpots < 40){
+                letterGrade = "Very Poor";
+            }else if(silentSpots <80){
+                letterGrade = "Poor";
+            }else if(silentSpots < 100){
+                letterGrade = "Mediocre";
+            }else if(silentSpots < 120){
+                letterGrade = "Good";
+            }else{
+                letterGrade = "Great";
+            }
 
-        runTest();
-        while(testComplete == false){
-            //Wait for vibration test to finish
-        }
-        int timeToComplete = silentSpots/10;
-        String letterGrade = "";
-        if(silentSpots < 40){
-            letterGrade = "Very Poor";
-        }else if(silentSpots <80){
-            letterGrade = "Poor";
-        }else if(silentSpots < 100){
-            letterGrade = "Mediocre";
-        }else if(silentSpots < 120){
-            letterGrade = "Good";
-        }else{
-            letterGrade = "Great";
+            touch.setVisibility(View.INVISIBLE);
+            scoreText.setText(scoreText.getText() + "\nTime until no vibration felt: " +timeToComplete +" seconds\n"+letterGrade);
+            scoreText.setVisibility(View.VISIBLE);
         }
 
-        touch.setVisibility(View.INVISIBLE);
-        scoreText.setText(scoreText.getText() + "\nTime until no vibration felt: " +timeToComplete +" seconds\n"+letterGrade);
-        scoreText.setVisibility(View.VISIBLE);
+
+
+        if(!testComplete){
+            runTest();
+        }
+
+
     }
 
     private void runTest() {
-        if(testComplete == false) {
+        if(!testComplete) {
             long[] pattern = {silentSpots, dot, silentSpots, dot};
             vibrator.vibrate(pattern, 0);
             new CountDownTimer(2000, 1000) {
@@ -86,7 +92,7 @@ public class VibrateActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    if (testComplete == false) {
+                    if (!testComplete) {
                         silentSpots += 10;
                         vibrator.cancel();
                         runTest();
