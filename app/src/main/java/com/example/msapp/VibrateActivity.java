@@ -30,12 +30,14 @@ public class VibrateActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.VIBRATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.VIBRATE},
                     1);
+        } else {
+            System.out.println("Permission Granted");
         }
 
-        int silentSpots = 0;
+        int silentSpots = 1000;
         int dot = 1;
-        long[] pattern = {VIBRATION_START, VIBRATION_DURATION, dot, silentSpots};
-        vibrator.vibrate(pattern, -1);
+        long[] pattern = {VIBRATION_START, 0, dot, silentSpots};
+        vibrator.vibrate(pattern, 2);
     }
 
     @Override
