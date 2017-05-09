@@ -84,6 +84,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     protected double totalTime = 0.00;
     protected double averageTime = 0.00;
     private ArrayList<Double> responseTimes = new ArrayList<Double>();
+    private ArrayList<ArrayList<Double>> learnTimes = new ArrayList<ArrayList<Double>>();
 
    private class Listener implements RecognitionListener
     {
@@ -147,15 +148,18 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void checkResult(String voiceResult){
-        if(validPairings.get(chosenSymbol).contains(voiceResult)){
-            numCorrect += 1;
-        }else{
-            numWrong += 1;
-        }
         numTotal += 1;
         secondTime = System.currentTimeMillis();
         totalTime = (secondTime - firstTime);
         totalTime /= 1000;
+        if(validPairings.get(chosenSymbol).contains(voiceResult)){
+            numCorrect += 1;
+            ArrayList<Double> hold = learnTimes.get(chosenSymbol);
+            hold.add(totalTime);
+            learnTimes.set(chosenSymbol, hold);
+        }else{
+            numWrong += 1;
+        }
         responseTimes.add(totalTime);
         numOfResponses++;
         firstTime = System.currentTimeMillis();
@@ -163,18 +167,21 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void checkResultNormal(int num){
-        if(num == chosenSymbol){
-            numCorrect += 1;
-        }
-        else{
-            numWrong += 1;
-        }
 
         numTotal += 1;
         secondTime = System.currentTimeMillis();
         System.out.println(firstTime + " " + secondTime);
         totalTime = (secondTime - firstTime);
         totalTime /= 1000;
+        if(num == chosenSymbol){
+            numCorrect += 1;
+            ArrayList<Double> hold = learnTimes.get(chosenSymbol);
+            hold.add(totalTime);
+            learnTimes.set(chosenSymbol, hold);
+        }
+        else{
+            numWrong += 1;
+        }
         responseTimes.add(totalTime);
         numOfResponses++;
         //initializing hash1.
@@ -426,6 +433,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                     }
                                     averageTime = totalTime/numOfResponses;
                                     System.out.println("average time is " + averageTime);
+                                    for (int b = 0;b < 9;b++){
+                                        ArrayList<Double> hold = learnTimes.get(b);
+                                        for (int q = 0;q < hold.size();q++){
+                                            System.out.println("symbol " + b + " time: " + hold.get(q));
+                                        }
+                                    }
                                 }
                                 sb = new StringBuffer();
                                 for (int i = 0; i < 9; i++){
@@ -482,7 +495,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             });
 
 
-
+            for (int i = 0;i<9;i++){
+                ArrayList<Double> x = new ArrayList<Double>();
+                learnTimes.add(x);
+            }
 
 
 
@@ -561,6 +577,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                         }
                         averageTime = totalTime/numOfResponses;
                         System.out.println("average time is " + averageTime);
+                        for (int b = 0;b < 9;b++){
+                            ArrayList<Double> hold = learnTimes.get(b);
+                            for (int q = 0;q < hold.size();q++){
+                                System.out.println("symbol " + b + " time: " + hold.get(q));
+                            }
+                        }
                     }
                     txtTimer.setVisibility(View.INVISIBLE);
                     speechInfo.setTextColor(Color.BLUE);
