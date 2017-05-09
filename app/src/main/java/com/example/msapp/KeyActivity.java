@@ -68,9 +68,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     Random r = new Random();
     private HashMap<Integer, Double> hash1 = new HashMap<Integer, Double>();
     private HashMap<String, Integer> hashRandomizeSymbol = new HashMap<>();
+    private HashMap<Integer, List<String>> validPairings = new HashMap<>();
+    private HashMap<Integer, Integer> imagePairing = new HashMap<>();
     private Button advancedStatsButton;
     private TextView statsTextview;
-    private HashMap<Integer, List<String>> validPairings = new HashMap<>();
+
     private StringBuffer sb;
     int chosenSymbol = -1;
     private static final String TAG = "test";
@@ -150,6 +152,30 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    public int setCorrespondingShape(int currentLoop){
+        switch (currentLoop) {
+            case 0:
+                return R.drawable.shape_circle;
+            case 1:
+                return R.drawable.shape_dollar;
+            case 2:
+                return R.drawable.shape_plus;
+            case 3:
+                return R.drawable.shape_pound;
+            case 4:
+                return R.drawable.shape_square;
+            case 5:
+                return R.drawable.shape_star;
+            case 6:
+                return R.drawable.shape_triangle;
+            case 7:
+                return R.drawable.shape_x;
+            case 8:
+                return R.drawable.crescent;
+
+        }
+        return -1;
+    }
     //randomizes symbol and number pairing
     public void setRandomizeSymbol(){
         String[] shapes = new String[]{"circle", "dollar", "plus", "hashtag", "square", "star", "triangle", "x", "crescent"};
@@ -159,9 +185,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                 chosenSymbol = r.nextInt(9 - 1 + 1) + 1;
             } while(hashRandomizeSymbol.containsValue(chosenSymbol));
             hashRandomizeSymbol.put(shapes[i], chosenSymbol);
+            imagePairing.put(chosenSymbol, setCorrespondingShape(i));
         }
-        System.out.println(hashRandomizeSymbol.toString());
 
+        System.out.println(hashRandomizeSymbol.toString());
     }
     public void checkResult(String voiceResult){
         if(validPairings.get(chosenSymbol).contains(voiceResult)){
@@ -289,40 +316,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
     public void randomizeSymbol(){
         chosenSymbol = r.nextInt(9 - 1 + 1) + 1;
-        System.out.println(chosenSymbol);
-        switch (chosenSymbol){
-            case 1:
-                symbol.setImageResource(R.drawable.shape_circle);
-                break;
-            case 2:
-                symbol.setImageResource(R.drawable.shape_dollar);
-                break;
-            case 3:
-                symbol.setImageResource(R.drawable.shape_plus);
-                break;
-            case 4:
-                symbol.setImageResource(R.drawable.shape_pound);
-                break;
-            case 5:
-                symbol.setImageResource(R.drawable.shape_square);
-                break;
-            case 6:
-                symbol.setImageResource(R.drawable.shape_star);
-                break;
-            case 7:
-                symbol.setImageResource(R.drawable.shape_triangle);
-                break;
-            case 8:
-                symbol.setImageResource(R.drawable.shape_x);
-                break;
-            case 9:
-                symbol.setImageResource(R.drawable.crescent);
-                break;
-            default:
-                System.out.println("not working");
-                break;
-        }
-
+        System.out.println("The new chosen symbol: " + chosenSymbol);
+        symbol.setImageResource(imagePairing.get(chosenSymbol));
     }
 
     @Override
