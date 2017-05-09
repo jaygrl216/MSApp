@@ -42,6 +42,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private Button button6;
     private Button button7;
     private Button button8;
+    private Button button9;
+
     private ImageView key;
     private ImageView symbol;
     private ImageButton mic;
@@ -63,7 +65,9 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int chosen7 = 0;
     private int chosen8 = 0;
     private int chosen9 = 0;
+    Random r = new Random();
     private HashMap<Integer, Double> hash1 = new HashMap<Integer, Double>();
+    private HashMap<String, Integer> hashRandomizeSymbol = new HashMap<>();
     private Button advancedStatsButton;
     private TextView statsTextview;
     private HashMap<Integer, List<String>> validPairings = new HashMap<>();
@@ -75,7 +79,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             "six","seven","eight",
             "sex", "1", "2",
             "3", "4", "5",
-            "6", "7", "8"));
+            "6", "7", "8", "9", "nine"));
 
     //time
     protected long firstTime = 0;
@@ -146,6 +150,19 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    //randomizes symbol and number pairing
+    public void setRandomizeSymbol(){
+        String[] shapes = new String[]{"circle", "dollar", "plus", "hashtag", "square", "star", "triangle", "x", "crescent"};
+        for(int i = 0; i < shapes.length; i++){
+            //number is already taken, try again so rerolling another value
+            do{
+                chosenSymbol = r.nextInt(9 - 1 + 1) + 1;
+            } while(hashRandomizeSymbol.containsValue(chosenSymbol));
+            hashRandomizeSymbol.put(shapes[i], chosenSymbol);
+        }
+        System.out.println(hashRandomizeSymbol.toString());
+
+    }
     public void checkResult(String voiceResult){
         if(validPairings.get(chosenSymbol).contains(voiceResult)){
             numCorrect += 1;
@@ -271,8 +288,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void randomizeSymbol(){
-        Random r = new Random();
-        chosenSymbol = r.nextInt(8 - 1 + 1) + 1;
+        chosenSymbol = r.nextInt(9 - 1 + 1) + 1;
         System.out.println(chosenSymbol);
         switch (chosenSymbol){
             case 1:
@@ -299,6 +315,9 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             case 8:
                 symbol.setImageResource(R.drawable.shape_x);
                 break;
+            case 9:
+                symbol.setImageResource(R.drawable.crescent);
+                break;
             default:
                 System.out.println("not working");
                 break;
@@ -310,6 +329,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_key);
+        //randomizes symbol and number pairing
+        setRandomizeSymbol();
         //inititating validPairings
         validPairings.put(1, Arrays.asList("one", "1"));
         validPairings.put(2, Arrays.asList("two", "2", "tell"));
@@ -319,7 +340,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         validPairings.put(6, Arrays.asList("six", "6", "sex"));
         validPairings.put(7, Arrays.asList("seven", "7"));
         validPairings.put(8, Arrays.asList("eight", "8", "ate"));
-
+        validPairings.put(9, Arrays.asList("nine", "9"));
         hash1.put(1, 0.0);
         hash1.put(2, 0.0);
         hash1.put(3, 0.0);
@@ -329,6 +350,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         hash1.put(7, 0.0);
         hash1.put(8, 0.0);
         hash1.put(9, 0.0);
+
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             instructions = (TextView) findViewById(R.id.instructions);
@@ -411,6 +433,13 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                 checkResultNormal(8);
                             }
                         });
+
+                        button9 = (Button) findViewById(R.id.button_9);
+                        button9.setOnClickListener(new View.OnClickListener(){
+                            public void onClick(View v){
+                                checkResultNormal(9);
+                            }
+                        });
                         firstTime = System.currentTimeMillis();
 
                         new CountDownTimer(15000, 1000) {
@@ -461,6 +490,10 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                         case 8:
                                             sb.append("\nX chosen " + chosen8+ " times\n");
                                             sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
+                                            break;
+                                        case 9:
+                                            sb.append("\nCrescent chosen " + chosen9+ " times\n");
+                                            sb.append("Average time for X: " + hash1.get(i)/(double)chosen9);
                                             break;
                                         default:
                                             break;
