@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -15,7 +16,12 @@ import android.widget.Toast;
 
 public class VibrateActivity extends AppCompatActivity {
     private static final int VIBRATION_START = 0;
-    private static final int VIBRATION_DURATION = 5000;
+    private static final int VIBRATION_DURATION = 2000;
+
+    private int silentSpots = 1;
+    private int dot = 1;
+    long[] pattern = {0,1,0,1};
+
 
     private Vibrator vibrator;
     @Override
@@ -34,10 +40,22 @@ public class VibrateActivity extends AppCompatActivity {
             System.out.println("Permission Granted");
         }
 
-        int silentSpots = 1000;
-        int dot = 1;
-        long[] pattern = {VIBRATION_START, 0, dot, silentSpots};
-        vibrator.vibrate(pattern, 2);
+        runTest();
+    }
+
+    private void runTest() {
+        long[] pattern = {silentSpots, dot, silentSpots, dot};
+        vibrator.vibrate(pattern, 0);
+        new CountDownTimer(2000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                silentSpots += 10;
+                vibrator.cancel();
+                runTest();
+            }
+        }.start();
     }
 
     @Override
