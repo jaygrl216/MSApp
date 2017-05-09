@@ -11,6 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:key="AIzaSyA-qFmnqoZsAitAPLemAGY2PQ4LaMHAiDA"
         tools:replace="android:label"
         android:label="MSApp"
         android:theme="@style/Theme.AppCompat.Light">
