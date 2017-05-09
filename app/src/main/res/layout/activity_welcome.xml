@@ -26,4 +26,16 @@
         android:text="Key-Pair Test"
         android:textSize="18sp"
         android:onClick="keyTest"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/key"
+        android:layout_alignStart="@+id/key"
+        android:layout_below="@+id/key"
+        android:layout_marginTop="29dp"
+        android:background="#EB8360"
+        android:text="Vibration"
+        android:textSize="18sp" />
 </RelativeLayout>
