@@ -16,4 +16,9 @@
         android:onClick="startVibrate"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score: "/>
 </RelativeLayout>
