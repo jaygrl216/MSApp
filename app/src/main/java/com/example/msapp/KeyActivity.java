@@ -10,6 +10,7 @@ import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -25,6 +26,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.TreeMap;
 
 public class KeyActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView instructions;
@@ -67,9 +69,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private int chosen9 = 0;
     Random r = new Random();
     private HashMap<Integer, Double> hash1 = new HashMap<Integer, Double>();
-    private HashMap<String, Integer> hashRandomizeSymbol = new HashMap<>();
     private HashMap<Integer, List<String>> validPairings = new HashMap<>();
-    private HashMap<Integer, Integer> imagePairing = new HashMap<>();
+    //number, shape name
+    private TreeMap<Integer, String> hashRandomizeSymbol = new TreeMap<>();
+    //number, shape image id
+    private TreeMap<Integer, Integer> imagePairing = new TreeMap();
     private Button advancedStatsButton;
     private TextView statsTextview;
 
@@ -183,8 +187,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             //number is already taken, try again so rerolling another value
             do{
                 chosenSymbol = r.nextInt(9 - 1 + 1) + 1;
-            } while(hashRandomizeSymbol.containsValue(chosenSymbol));
-            hashRandomizeSymbol.put(shapes[i], chosenSymbol);
+            } while(hashRandomizeSymbol.containsKey(chosenSymbol));
+            hashRandomizeSymbol.put(chosenSymbol,shapes[i]);
             imagePairing.put(chosenSymbol, setCorrespondingShape(i));
         }
 
