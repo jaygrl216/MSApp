@@ -247,10 +247,23 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    public void randomizeSymbol(){
+    public void randomizeSymbol() {
         chosenSymbol = r.nextInt(9 - 1 + 1) + 1;
         System.out.println("The new chosen symbol: " + chosenSymbol);
         symbol.setImageResource(imagePairing.get(chosenSymbol));
+    }
+
+    //this function ensures the UI aligns the correct shape to the correct number
+    public void setUIImages(){
+        ((ImageView)findViewById(R.id.imageView1)).setImageResource(imagePairing.get(1));
+        ((ImageView)findViewById(R.id.imageView2)).setImageResource(imagePairing.get(2));
+        ((ImageView)findViewById(R.id.imageView3)).setImageResource(imagePairing.get(3));
+        ((ImageView)findViewById(R.id.imageView4)).setImageResource(imagePairing.get(4));
+        ((ImageView)findViewById(R.id.imageView5)).setImageResource(imagePairing.get(5));
+        ((ImageView)findViewById(R.id.imageView6)).setImageResource(imagePairing.get(6));
+        ((ImageView)findViewById(R.id.imageView7)).setImageResource(imagePairing.get(7));
+        ((ImageView)findViewById(R.id.imageView8)).setImageResource(imagePairing.get(8));
+        ((ImageView)findViewById(R.id.imageView9)).setImageResource(imagePairing.get(9));
     }
 
     @Override
@@ -259,6 +272,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_key);
         //randomizes symbol and number pairing
         setRandomizeSymbol();
+        setUIImages();
         //inititating validPairings
         validPairings.put(1, Arrays.asList("one", "1"));
         validPairings.put(2, Arrays.asList("two", "2", "tell"));
@@ -269,6 +283,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         validPairings.put(7, Arrays.asList("seven", "7"));
         validPairings.put(8, Arrays.asList("eight", "8", "ate"));
         validPairings.put(9, Arrays.asList("nine", "9"));
+
         hash1.put(1, 0.0);
         hash1.put(2, 0.0);
         hash1.put(3, 0.0);
