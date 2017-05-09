@@ -22,4 +22,9 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent i = new Intent(this, KeyActivity.class);
         startActivity(i);
     }
+
+    public void vibrateTest(View v) {
+        Intent i = new Intent(this, VibrateActivity.class);
+        startActivity(i);
+    }
 }
