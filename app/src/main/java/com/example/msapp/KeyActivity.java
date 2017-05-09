@@ -9,6 +9,7 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -154,9 +155,9 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         totalTime /= 1000;
         if(validPairings.get(chosenSymbol).contains(voiceResult)){
             numCorrect += 1;
-            ArrayList<Double> hold = learnTimes.get(chosenSymbol);
+            ArrayList<Double> hold = learnTimes.get(chosenSymbol - 1);
             hold.add(totalTime);
-            learnTimes.set(chosenSymbol, hold);
+            learnTimes.set(chosenSymbol - 1, hold);
         }else{
             numWrong += 1;
         }
@@ -175,9 +176,9 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         totalTime /= 1000;
         if(num == chosenSymbol){
             numCorrect += 1;
-            ArrayList<Double> hold = learnTimes.get(chosenSymbol);
+            ArrayList<Double> hold = learnTimes.get(chosenSymbol - 1);
             hold.add(totalTime);
-            learnTimes.set(chosenSymbol, hold);
+            learnTimes.set(chosenSymbol - 1, hold);
         }
         else{
             numWrong += 1;
@@ -441,46 +442,226 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                     }
                                 }
                                 sb = new StringBuffer();
+                                ArrayList<Double> hold;
+                                int learnSize;
+                                double learnScore;
+                                double currentScore;
+                                double lastScore;
                                 for (int i = 0; i < 9; i++){
                                     switch (i){
                                         case 1:
                                             sb.append("CIRCLE chosen " + chosen1+ " times\n");
                                             sb.append("Average time for CIRCLE: " + hash1.get(i)/(double)chosen1);
+                                            sb.append("\nTimes in order for CIRCLE are ");
+                                            hold = learnTimes.get(0);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for CIRCLE is " + learnScore);
                                             break;
                                         case 2:
                                             sb.append("\nDOLLAR chosen " + chosen2+ " times\n");
                                             sb.append("Average time for DOLLAR: " + hash1.get(i)/(double)chosen2);
-                                            break;
+                                            sb.append("\nTimes in order for DOLLAR are ");
+                                            hold = learnTimes.get(1);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for DOLLAR is " + learnScore);
                                         case 3:
                                             sb.append("\nPLUS chosen " + chosen3+ " times\n");
                                             sb.append("Average time for PLUS: " + hash1.get(i)/(double)chosen3);
+                                            sb.append("\nTimes in order for PLUS are ");
+                                            hold = learnTimes.get(2);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for PLUS is " + learnScore);
                                             break;
                                         case 4:
                                             sb.append("\nHASHTAG chosen " + chosen4+ " times\n");
                                             sb.append("Average time for HASHTAG: " + hash1.get(i)/(double)chosen4);
+                                            sb.append("\nTimes in order for HASHTAG are ");
+                                            hold = learnTimes.get(3);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for HASHTAG is " + learnScore);
                                             break;
                                         case 5:
                                             sb.append("\nSQUARE chosen " + chosen5+ " times\n");
                                             sb.append("Average time for SQUARE: " + hash1.get(i)/(double)chosen5);
+                                            sb.append("\nTimes in order for SQUARE are ");
+                                            hold = learnTimes.get(4);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for NONE is " + learnScore);
                                             break;
                                         case 6:
                                             sb.append("\nSTAR chosen " + chosen6+ " times\n");
                                             sb.append("Average time for STAR: " + hash1.get(i)/(double)chosen6);
+                                            sb.append("\nTimes in order for STAR are ");
+                                            hold = learnTimes.get(5);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for STAR is " + learnScore);
                                             break;
                                         case 7:
                                             sb.append("\nTRIANGLE chosen " + chosen7+ " times\n");
                                             sb.append("Average time for TRIANGLE: " + hash1.get(i)/(double)chosen7);
+                                            sb.append("\nTimes in order for TRIANGLE are ");
+                                            hold = learnTimes.get(6);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for TRIANGLE is " + learnScore);
                                             break;
                                         case 8:
                                             sb.append("\nX chosen " + chosen8+ " times\n");
                                             sb.append("Average time for X: " + hash1.get(i)/(double)chosen8);
+                                            sb.append("\nTimes in order for X are ");
+                                            hold = learnTimes.get(7);
+                                            learnSize = hold.size();
+                                            learnScore = 0.00;
+                                            currentScore = 0.00;
+                                            lastScore = 0.00;
+                                            if (learnSize == 0){
+                                                sb.append("NONE");
+                                            }else {
+                                                for (int q = 0; q < learnSize; q++) {
+                                                    currentScore = hold.get(q);
+                                                    sb.append("\n" + currentScore);
+                                                    if (q != learnSize - 1){
+                                                        sb.append(",");
+                                                    }
+                                                    if (q != 0){
+                                                        learnScore += lastScore - currentScore;
+                                                    }
+                                                    lastScore = currentScore;
+                                                }
+                                            }
+                                            sb.append("\nLearned score for X is " + learnScore);
                                             break;
                                         default:
                                             break;
                                     }
                                 }
                                 statsTextview.setText(sb);
-
+                                statsTextview.setMovementMethod(new ScrollingMovementMethod());
                                 numericKeypad.setVisibility(View.INVISIBLE);
                                 normalTimer.setVisibility(View.INVISIBLE);
                                 advancedStatsButton.setVisibility(View.VISIBLE);
@@ -489,7 +670,6 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                 speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries" + "\nAverage Time: " + averageTime);
                             }
                         }.start();
-                        startTest = true;
                     }
                 }
             });
