@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="Added vibrator object">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" />
     </list>
     <ignored path="MSApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,8 +45,8 @@
       <file leaf-file-name="KeyActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="191" column="69" selection-start-line="191" selection-start-column="69" selection-end-line="191" selection-end-column="69" />
+            <state relative-caret-position="180">
+              <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
               <folding>
                 <element signature="e#2115#2132#0" expanded="true" />
                 <element signature="e#2642#2650#0" expanded="true" />
@@ -3111,8 +3110,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="191" column="69" selection-start-line="191" selection-start-column="69" selection-end-line="191" selection-end-column="69" />
+        <state relative-caret-position="180">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
           <folding>
             <element signature="e#2115#2132#0" expanded="true" />
             <element signature="e#2642#2650#0" expanded="true" />
