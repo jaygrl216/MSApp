@@ -43,6 +43,7 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
     private int timesPressed = 0;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,25 +71,24 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
             touch.setText("Stop");
         }else{
             testComplete = true;
-            sendToSheets();
             vibrator.cancel();
             int timeToComplete = silentSpots/10;
-            String letterGrade = "";
+            int letterGrade = -1;
             if(silentSpots < 40){
-                letterGrade = "Very Poor";
+                letterGrade = 1;
             }else if(silentSpots <80){
-                letterGrade = "Poor";
+                letterGrade = 2;
             }else if(silentSpots < 100){
-                letterGrade = "Mediocre";
+                letterGrade = 3;
             }else if(silentSpots < 120){
-                letterGrade = "Good";
+                letterGrade = 4;
             }else{
-                letterGrade = "Great";
+                letterGrade = 5;
             }
 
             touch.setVisibility(View.INVISIBLE);
-            scoreText.setText(scoreText.getText() + "\nTime until no vibration felt: " +timeToComplete +" seconds\n"+letterGrade);
-            sendToSheets();
+            scoreText.setText(scoreText.getText() + "\nTime until no vibration felt: " +timeToComplete +" seconds\n"+ "You got a " + letterGrade + "\nNote, 1 indicates very poor, 2 indicates poor, 3 indicates fair, 4 indicates good, 5 indicates excellent.");
+            sendToSheets((float) letterGrade);
             scoreText.setVisibility(View.VISIBLE);
         }
 
@@ -121,11 +121,11 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
     }
 
     //i dont know the metrics for this method
-    private void sendToSheets(){
+    private void sendToSheets(float letterGrade){
         //the last field should be an answer of sorts
         //Sheets.TestType.OUTDOOR_WALKING is there because this test hasn't been
         //added to the source code
-        sheet.writeData(Sheets.TestType.LH_TAP, getString(R.string.username), 420);
+        sheet.writeData(Sheets.TestType.LH_TAP, getString(R.string.username), letterGrade);
         System.out.println("written");
     }
 
