@@ -71,6 +71,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     private ImageView key7;
     private ImageView key8;
     private ImageView key9;
+
+    private ImageView result1;
+    private ImageView result2;
+    private ImageView result3;
+    private ImageView result4;
+    private ImageView result5;
+    private ImageView result6;
+    private ImageView result7;
+    private ImageView result8;
+    private ImageView result9;
+
     private ImageView symbol;
     private ImageButton mic;
     private SpeechRecognizer sr;
@@ -279,6 +290,16 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         ((ImageView)findViewById(R.id.imageView7)).setImageResource(imagePairing.get(7));
         ((ImageView)findViewById(R.id.imageView8)).setImageResource(imagePairing.get(8));
         ((ImageView)findViewById(R.id.imageView9)).setImageResource(imagePairing.get(9));
+
+        ((ImageView)findViewById(R.id.imageResultView1)).setImageResource(imagePairing.get(1));
+        ((ImageView)findViewById(R.id.imageResultView2)).setImageResource(imagePairing.get(2));
+        ((ImageView)findViewById(R.id.imageResultView3)).setImageResource(imagePairing.get(3));
+        ((ImageView)findViewById(R.id.imageResultView4)).setImageResource(imagePairing.get(4));
+        ((ImageView)findViewById(R.id.imageResultView5)).setImageResource(imagePairing.get(5));
+        ((ImageView)findViewById(R.id.imageResultView6)).setImageResource(imagePairing.get(6));
+        ((ImageView)findViewById(R.id.imageResultView7)).setImageResource(imagePairing.get(7));
+        ((ImageView)findViewById(R.id.imageResultView8)).setImageResource(imagePairing.get(8));
+        ((ImageView)findViewById(R.id.imageResultView9)).setImageResource(imagePairing.get(9));
     }
 
     @Override
@@ -333,6 +354,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             key7 = (ImageView) findViewById(R.id.imageView7);
             key8 = (ImageView) findViewById(R.id.imageView8);
             key9 = (ImageView) findViewById(R.id.imageView9);
+            result1 = (ImageView) findViewById(R.id.imageResultView1);
+            result2 = (ImageView) findViewById(R.id.imageResultView2);
+            result3 = (ImageView) findViewById(R.id.imageResultView3);
+            result4 = (ImageView) findViewById(R.id.imageResultView4);
+            result5 = (ImageView) findViewById(R.id.imageResultView5);
+            result6 = (ImageView) findViewById(R.id.imageResultView6);
+            result7 = (ImageView) findViewById(R.id.imageResultView7);
+            result8 = (ImageView) findViewById(R.id.imageResultView8);
+            result9 = (ImageView) findViewById(R.id.imageResultView9);
             symbol = (ImageView) findViewById(R.id.symbol);
             mic = (ImageButton) findViewById(R.id.speak);
             normal = (Button) findViewById(R.id.normal);
@@ -440,7 +470,11 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                 for (int i = 0; i < 9; i++){
                                     shapeName = hashRandomizeSymbol.get(i + 1);
                                     sb.append(shapeName + " chosen " + chosen[i]+ " times\n");
-                                    sb.append("Average time for " + shapeName + ": " + hash1.get(i)/(double)chosen[i]);
+                                    if (hash1.get(i) == null){
+                                        sb.append("Average time for " + shapeName + ": 0");
+                                    }else{
+                                        sb.append("Average time for " + shapeName + ": " + hash1.get(i)/(double)chosen[i]);
+                                    }
                                     sb.append("\nTimes in order for " + shapeName + " are ");
                                     hold = learnTimes.get(i);
                                     learnSize = hold.size();
@@ -495,6 +529,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             key7.setVisibility(View.INVISIBLE);
             key8.setVisibility(View.INVISIBLE);
             key9.setVisibility(View.INVISIBLE);
+            result1.setVisibility(View.INVISIBLE);
+            result2.setVisibility(View.INVISIBLE);
+            result3.setVisibility(View.INVISIBLE);
+            result4.setVisibility(View.INVISIBLE);
+            result5.setVisibility(View.INVISIBLE);
+            result6.setVisibility(View.INVISIBLE);
+            result7.setVisibility(View.INVISIBLE);
+            result8.setVisibility(View.INVISIBLE);
+            result9.setVisibility(View.INVISIBLE);
             numbers.setVisibility(View.INVISIBLE);
             symbol.setVisibility(View.INVISIBLE);
             mic.setVisibility(View.INVISIBLE);
@@ -641,6 +684,15 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         advancedStatsButton.setVisibility(View.INVISIBLE);
 
         statsTextview.setVisibility(View.VISIBLE);
+        result1.setVisibility(View.VISIBLE);
+        result2.setVisibility(View.VISIBLE);
+        result3.setVisibility(View.VISIBLE);
+        result4.setVisibility(View.VISIBLE);
+        result5.setVisibility(View.VISIBLE);
+        result6.setVisibility(View.VISIBLE);
+        result7.setVisibility(View.VISIBLE);
+        result8.setVisibility(View.VISIBLE);
+        result9.setVisibility(View.VISIBLE);
     }
 
 
