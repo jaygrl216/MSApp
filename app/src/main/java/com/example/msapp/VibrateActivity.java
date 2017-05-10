@@ -2,6 +2,7 @@ package com.example.msapp;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.CountDownTimer;
@@ -176,6 +177,12 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
         }
 
         this.sheet.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        this.sheet.onActivityResult(requestCode, resultCode, data);
     }
 
 
