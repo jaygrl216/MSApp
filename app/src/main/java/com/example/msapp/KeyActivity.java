@@ -45,6 +45,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
 
     private Sheets sheet;
 
+    private CountDownTimer timerSpeech;
+    private CountDownTimer timerClick;
     private TextView instructions;
     private TextView numbers;
     private TextView txtTimer;
@@ -441,7 +443,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                         });
                         firstTime = System.currentTimeMillis();
 
-                        new CountDownTimer(15000, 1000) {
+                        timerClick = new CountDownTimer(15000, 1000) {
                             public void onTick(long millisUntilFinished) {
                                 normalTimer.setText("" +--timeRemaining);
                             }
@@ -507,6 +509,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                                 speechInfo.setVisibility(View.VISIBLE);
                                 speechInfo.setTextColor(Color.BLUE);
                                 speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries" + "\nAverage Time: " + averageTime);
+                                numTotal = (numTotal == 0) ? 1 : numTotal;
+                                sendToSheets(Sheets.TestType.RH_TAP, (float) numCorrect / numTotal);
                             }
                         }.start();
                     }
@@ -554,6 +558,17 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         }
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(timerClick != null){
+            timerClick.cancel();
+        }
+        if(timerSpeech != null){
+            timerSpeech.cancel();
+        }
     }
 
     public void startSpeechTest(View v) {
@@ -618,7 +633,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
         System.out.println("here");
         if(!startTest){
             firstTime = System.currentTimeMillis();
-            new CountDownTimer(15000, 1000) {
+            timerSpeech = new CountDownTimer(15000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     txtTimer.setText("Time Remaining: " + --timeRemaining);
                 }
@@ -642,7 +657,8 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
                     speechInfo.setTextColor(Color.BLUE);
                     speechInfo.setText("Test is over!\nYou got " + numCorrect + " correct \n" + numWrong + " incorrect\nOut of " + numTotal + " tries" + "\nAverage Time: " + averageTime);
                     mic.setOnClickListener(null);
-                    //TODO: ADD MORE STUFF AS NEEDED SUCH AS STAT
+                    numTotal = (numTotal == 0) ? 1 : numTotal;
+                    sendToSheets(Sheets.TestType.LH_TAP, (float) numCorrect / numTotal);
                 }
             }.start();
             startTest = true;
@@ -697,12 +713,12 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    private void sendToSheets(){
+    private void sendToSheets(Sheets.TestType test, Float avgTime){
         //the last field should be an answer of sorts
         //Sheets.TestType.OUTDOOR_WALKING is there because this test hasn't been
         //added to the source code
 
-        sheet.writeData(Sheets.TestType.OUTDOOR_WALKING, getString(R.string.username).toString(), 420);
+        sheet.writeData(test, getString(R.string.username).toString(), avgTime);
     }
 
 

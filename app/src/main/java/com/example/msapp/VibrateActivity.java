@@ -125,7 +125,7 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
         //the last field should be an answer of sorts
         //Sheets.TestType.OUTDOOR_WALKING is there because this test hasn't been
         //added to the source code
-        sheet.writeData(Sheets.TestType.LH_TAP, getString(R.string.username), letterGrade);
+        sheet.writeData(Sheets.TestType.LH_LEVEL, getString(R.string.username), 100 * letterGrade);
         System.out.println("written");
     }
 
