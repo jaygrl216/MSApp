@@ -70,6 +70,7 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
             touch.setText("Stop");
         }else{
             testComplete = true;
+            sendToSheets();
             vibrator.cancel();
             int timeToComplete = silentSpots/10;
             String letterGrade = "";

@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="troubleshooting write to sheets">
+    <list default="true" id="93c29b35-daba-476e-a49e-9cd28f9afd81" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java" />
     </list>
@@ -118,10 +118,11 @@
           <file leaf-file-name="VibrateActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="184" column="67" selection-start-line="184" selection-start-column="67" selection-end-line="184" selection-end-column="67" />
+                <state relative-caret-position="-404">
+                  <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#4302#4330#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -2150,8 +2151,8 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java" />
       </list>
     </option>
   </component>
@@ -2942,7 +2943,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494316592272</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="troubleshooting write to sheets, added onActivityResult override to VibrateActivity class&#10;">
+      <created>1494450704519</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1494450704519</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2954,7 +2962,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36402267" sideWeight="0.5072698" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22946176" sideWeight="0.5072698" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.296034" sideWeight="0.49135137" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17422096" sideWeight="0.49783784" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3555241" sideWeight="0.49783784" order="7" side_tool="false" content_ui="tabs" />
@@ -3039,7 +3047,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added terrain" />
     <MESSAGE value="Added Welcome Activity and Key Activity Screen" />
     <MESSAGE value="Connected Welcome Activity to other tests" />
     <MESSAGE value="Adding UI to Key Test" />
@@ -3064,7 +3071,8 @@
     <MESSAGE value="set up sheets library" />
     <MESSAGE value="outlined code for using the new sheets library. added vals &amp; methods etc" />
     <MESSAGE value="troubleshooting write to sheets" />
-    <option name="LAST_COMMIT_MESSAGE" value="troubleshooting write to sheets" />
+    <MESSAGE value="troubleshooting write to sheets, added onActivityResult override to VibrateActivity class&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="troubleshooting write to sheets, added onActivityResult override to VibrateActivity class&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3374,16 +3382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="184" column="67" selection-start-line="184" selection-start-column="67" selection-end-line="184" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -3411,6 +3409,17 @@
             <element signature="e#17966#17967#0" expanded="false" />
             <element signature="e#22584#22585#0" expanded="false" />
             <element signature="e#22678#22686#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/msapp/VibrateActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-404">
+          <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4302#4330#0" expanded="true" />
           </folding>
         </state>
       </provider>
