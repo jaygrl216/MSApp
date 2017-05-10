@@ -113,9 +113,6 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
                         vibrator.cancel();
                         runTest();
                     }
-                    else{
-                        sendToSheets();
-                    }
                 }
             }.start();
         }
@@ -126,7 +123,8 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
         //the last field should be an answer of sorts
         //Sheets.TestType.OUTDOOR_WALKING is there because this test hasn't been
         //added to the source code
-        sheet.writeData(Sheets.TestType.OUTDOOR_WALKING, getString(R.string.username), 420);
+        sheet.writeData(Sheets.TestType.LH_TAP, getString(R.string.username), 420);
+        System.out.println("written");
     }
 
 
@@ -166,7 +164,6 @@ public class VibrateActivity extends AppCompatActivity implements Sheets.Host{
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
-        // Make sure it's our original READ_CONTACTS request
         if (requestCode == 1) {
             if (grantResults.length == 1 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {

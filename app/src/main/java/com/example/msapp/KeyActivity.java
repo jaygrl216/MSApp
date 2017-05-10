@@ -285,29 +285,7 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_key);
-        //randomizes symbol and number pairing
-        setRandomizeSymbol();
-        setUIImages();
-        //inititating validPairings
-        validPairings.put(1, Arrays.asList("one", "1"));
-        validPairings.put(2, Arrays.asList("two", "2", "tell"));
-        validPairings.put(3, Arrays.asList("three", "3", "tree"));
-        validPairings.put(4, Arrays.asList("four", "4"));
-        validPairings.put(5, Arrays.asList("five", "5"));
-        validPairings.put(6, Arrays.asList("six", "6", "sex"));
-        validPairings.put(7, Arrays.asList("seven", "7"));
-        validPairings.put(8, Arrays.asList("eight", "8", "ate"));
-        validPairings.put(9, Arrays.asList("nine", "9"));
 
-        hash1.put(1, 0.0);
-        hash1.put(2, 0.0);
-        hash1.put(3, 0.0);
-        hash1.put(4, 0.0);
-        hash1.put(5, 0.0);
-        hash1.put(6, 0.0);
-        hash1.put(7, 0.0);
-        hash1.put(8, 0.0);
-        hash1.put(9, 0.0);
 
 
         sheet = new Sheets(this, this, getString(R.string.app_name), getString(R.string.CMSC436_testing_spreadsheet), getString(R.string.CMSC436_private_test_spreadsheet));
@@ -316,6 +294,29 @@ public class KeyActivity extends AppCompatActivity implements View.OnClickListen
             instructions = (TextView) findViewById(R.id.instructions);
             instructions.setText(R.string.instructions);
         } else {
+            //randomizes symbol and number pairing
+            setRandomizeSymbol();
+            setUIImages();
+            //inititating validPairings
+            validPairings.put(1, Arrays.asList("one", "1"));
+            validPairings.put(2, Arrays.asList("two", "2", "tell"));
+            validPairings.put(3, Arrays.asList("three", "3", "tree"));
+            validPairings.put(4, Arrays.asList("four", "4"));
+            validPairings.put(5, Arrays.asList("five", "5"));
+            validPairings.put(6, Arrays.asList("six", "6", "sex"));
+            validPairings.put(7, Arrays.asList("seven", "7"));
+            validPairings.put(8, Arrays.asList("eight", "8", "ate"));
+            validPairings.put(9, Arrays.asList("nine", "9"));
+
+            hash1.put(1, 0.0);
+            hash1.put(2, 0.0);
+            hash1.put(3, 0.0);
+            hash1.put(4, 0.0);
+            hash1.put(5, 0.0);
+            hash1.put(6, 0.0);
+            hash1.put(7, 0.0);
+            hash1.put(8, 0.0);
+            hash1.put(9, 0.0);
             advancedStatsButton = (Button) findViewById(R.id.advancedStatsButton);
             advancedStatsButton.setVisibility(View.INVISIBLE);
             statsTextview = (TextView) findViewById(R.id.statsTextview);
